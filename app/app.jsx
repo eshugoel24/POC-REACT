@@ -1,19 +1,9 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+import Cart from 'Cart';
 
-var obj1={
-    name:'eshu',
-    area: 'nagina'
-};
-
-var obj2={
-    age:24,
-    ...obj1
-};
-
-console.log(obj2);
 
 ReactDOM.render(
-    <h1>Hello world</h1>, 
+    <Cart/>,
     document.getElementById("app")
 );
