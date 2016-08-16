@@ -27,5 +27,5 @@ class CategoryComponent extends React.Component{
     };
 };
 
-//ReactDOM.render(<CategoryComponent />, app);
-export default CategoryComponent;
+ReactDOM.render(<CategoryComponent />, app);
+//export default CategoryComponent;
