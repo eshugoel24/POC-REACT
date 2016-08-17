@@ -7,7 +7,7 @@ module.exports = {
     resolve: {
         root: __dirname,
         alias: {
-          Cart: 'app/cartview.jsx'
+          Cart: 'app/cart/CartView.jsx',
         },
         extensions: ['','.js','.jsx']
     },
