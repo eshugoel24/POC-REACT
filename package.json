@@ -10,8 +10,11 @@
   "author": "Eshu Goel",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "axios": "^0.13.1",
     "express": "^4.14.0",
+    "jsonwebtoken": "^7.1.9",
+    "mongoose": "^4.5.9",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-router": "^2.6.1"
