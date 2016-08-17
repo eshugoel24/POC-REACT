@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 class AddCategory extends React.Component{
 constructor(props){
     super(props);
+    this._handleAdd = this._handleAdd.bind(this);
 };
 _handleAdd(e){
     e.preventDefault(); 
@@ -18,11 +19,13 @@ _handleAdd(e){
 }
 render(){
     return(
-    <div>
-        <h1>Add Categories</h1>
-        <input type='text' placeholder='Add a new category' ref='txtAddCat' />
-        <button id='btnAddCategory' onClick={this._handleAdd.bind(this)}> Add</button>
-    </div>
+    <form onSubmit={this._handleAdd}> 
+        <div>
+            <h1>Add Categories</h1>
+            <input type='text' placeholder='Add a new category' ref='txtAddCat' />
+            <button id='btnAddCategory' onClick={this._handleAdd}> Add</button>
+        </div>
+    </form>
     )
 };
 
