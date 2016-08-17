@@ -1,7 +1,15 @@
 var express = require('express');
 var app = express();
 var bodyParser = require("body-parser");
-var port=8989;
+const PORT = process.env.PORT || 8989;
+
+app.use(function (req, res, next){
+  if (req.headers['x-forwarded-proto'] === 'https') {
+    res.redirect('http://' + req.hostname + req.url);
+  } else {
+    next();
+  }
+});
 
 var apiRouter = express.Router();
 app.use(bodyParser.urlencoded({extended:false}));
@@ -51,6 +59,6 @@ apiRouter.get('/products/:id/reviews',function(request,response){
 	});
 });
 app.use('/api',apiRouter);
-app.listen(port, function(){
-    console.log("API started at "+port);
+app.listen(PORT, function () {
+  console.log('Express server is up and running on port ' + PORT);
 });
