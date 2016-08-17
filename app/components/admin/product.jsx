@@ -31,4 +31,5 @@ class ProductComponent extends React.Component {
     
 };
 
-ReactDOM.render(<ProductComponent />,app);
+//ReactDOM.render(<ProductComponent />,app);
+export default ProductComponent;
