@@ -2,7 +2,7 @@ import React from 'react';
 
 class Dashboard extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
     }
     render(){
         return(
@@ -12,3 +12,5 @@ class Dashboard extends React.Component{
         );
     }
 }
+
+export default Dashboard;
