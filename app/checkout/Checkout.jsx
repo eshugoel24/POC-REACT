@@ -5,15 +5,17 @@ import Email from './EmailSelection';
 class Checkout extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {emails: this.props.emails};
+        this.state = {emails: ['vishals@exzeo.com', 'rahul@exzeo.com']};
     }
 
     _addEmail() {
         var self = this;
         var newEmail = prompt("Enter new email:");
+        var emails = this.state.emails;
+        debugger;
         if (newEmail !== null) {
-            if (self._validateEmail(newEmail)) {
-                var emails = this.state.emails;
+            if (self._validateEmail(newEmail)) {  
+                debugger;                              
                 emails.push(newEmail);
                 self.setState({emails: emails});
             } else {
