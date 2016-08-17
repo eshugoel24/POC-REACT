@@ -6,22 +6,14 @@ import Checkout from './checkout/Checkout'
 
 var data = ['test1','test2'];
 
-<<<<<<< HEAD
 ReactDOM.render(
-    <Checkout emails={['vishals@exzeo.com','rahul@exzeo.com']}/>,
-    document.getElementById("app")
+		
+		<Router history={hashHistory}>
+    		<Route path="/" component={() => <Cart productNames={data}/>} >
+       		 	<IndexRoute component={() => <Cart productNames={data}/>} />
+    		</Route>
+    		<Route path="/checkout" component={Checkout} >
+    			<IndexRoute component={Checkout} />
+    		</Route>
+		</Router>,  document.getElementById("app")
 );
-=======
-
-	ReactDOM.render(
-			
-			<Router history={hashHistory}>
-        		<Route path="/" component={() => <Cart productNames={data}/>} >
-           		 <IndexRoute component={() => <Cart productNames={data}/>} />
-        		</Route>
-        		<Route path="/checkout" component={() => <Cart productNames={data}/>} >
-           		 <IndexRoute component={() => <Cart productNames={data}/>} />
-        		</Route>
-   			</Router>,  document.getElementById("app")
-	);
->>>>>>> 45f855745dfa43cd9648ef185870964a69d122af
