@@ -50,13 +50,17 @@
 
 	var _Cart2 = _interopRequireDefault(_Cart);
 
+	var _Checkout = __webpack_require__(179);
+
+	var _Checkout2 = _interopRequireDefault(_Checkout);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(36);
 
 
-	ReactDOM.render(React.createElement(_Cart2.default, { productNames: ['test', 'test2'] }), document.getElementById("app"));
+	ReactDOM.render(React.createElement(_Checkout2.default, { emails: ['vishals@exzeo.com', 'rahul@exzeo.com'] }), document.getElementById("app"));
 
 /***/ },
 /* 1 */
@@ -21675,6 +21679,169 @@
 	}(_react2.default.Component);
 
 	exports.default = CheckoutButton;
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(36);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var EmailSelection = function (_React$Component) {
+	    _inherits(EmailSelection, _React$Component);
+
+	    function EmailSelection(props) {
+	        _classCallCheck(this, EmailSelection);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(EmailSelection).call(this, props));
+	    }
+
+	    _createClass(EmailSelection, [{
+	        key: '_addEmail',
+	        value: function _addEmail() {
+	            if (typeof this.props.addEmail === 'function') {
+	                this.props.addEmail();
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var emails = this.props.emails;
+	            return _react2.default.createElement(
+	                'div',
+	                { id: 'email_selection' },
+	                _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    'Selected email address will get the download link.'
+	                ),
+	                _react2.default.createElement(
+	                    'ul',
+	                    null,
+	                    emails.map(function (email) {
+	                        return _react2.default.createElement(
+	                            'li',
+	                            null,
+	                            _react2.default.createElement('input', { type: 'radio', name: 'emailGp', value: email }),
+	                            email
+	                        );
+	                    })
+	                ),
+	                _react2.default.createElement(
+	                    'button',
+	                    { onClick: this._addEmail.bind(this) },
+	                    'Add new email'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return EmailSelection;
+	}(_react2.default.Component);
+
+	EmailSelection.defaultProps = { emails: ['vishals@exzeoindia.com'] };
+
+	exports.default = EmailSelection;
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(36);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _EmailSelection = __webpack_require__(178);
+
+	var _EmailSelection2 = _interopRequireDefault(_EmailSelection);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Checkout = function (_React$Component) {
+	    _inherits(Checkout, _React$Component);
+
+	    function Checkout(props) {
+	        _classCallCheck(this, Checkout);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Checkout).call(this, props));
+
+	        _this.state = { emails: _this.props.emails };
+	        return _this;
+	    }
+
+	    _createClass(Checkout, [{
+	        key: '_addEmail',
+	        value: function _addEmail() {
+	            var self = this;
+	            var newEmail = prompt("Enter new email:");
+	            if (newEmail !== null) {
+	                if (self._validateEmail(newEmail)) {
+	                    var emails = this.state.emails;
+	                    emails.push(newEmail);
+	                    self.setState({ emails: emails });
+	                } else {
+	                    alert("Not a valid email.");
+	                }
+	            }
+	        }
+	    }, {
+	        key: '_validateEmail',
+	        value: function _validateEmail(str) {
+	            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+	            return re.test(str);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var userEmails = this.state.emails;
+	            return _react2.default.createElement(_EmailSelection2.default, { emails: userEmails, addEmail: this._addEmail.bind(this) });
+	        }
+	    }]);
+
+	    return Checkout;
+	}(_react2.default.Component);
+
+	exports.default = Checkout;
 
 /***/ }
 /******/ ]);
