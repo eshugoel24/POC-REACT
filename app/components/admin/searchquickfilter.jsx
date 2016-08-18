@@ -13,7 +13,7 @@ class SearchQuickFilter extends React.Component {
         return (
             <div>
                 <input  type='text' 
-                        placeholder='Search in category' 
+                        placeholder='Search...' 
                         ref='txtSearchQuickFilter'
                         onChange={this._handleSearchCategory} />
             </div>

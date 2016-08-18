@@ -6,8 +6,8 @@ class ListProduct extends React.Component {
         super(props, context);
         this._handleDeleteItem = this._handleDeleteItem.bind(this);
     };
-    _handleDeleteItem(pName,pCategory) {
-        this.props.onDeleteItem(pCategory, pName);
+    _handleDeleteItem(pData) {
+        this.props.onDeleteItem(pData);
     };
     render() {
         var self = this;
@@ -20,11 +20,11 @@ class ListProduct extends React.Component {
                     return (
                             <div>
                                 <div className="prod_list_category left" key={i}>{category}</div>        
-                                <ProductMeta childItems={items[category]} notifyDelete={self._handleDeleteItem(category)} />
+                                <ProductMeta key={category} category={category} childItems={items[category]} notifyDelete={self._handleDeleteItem} {...this.props} />
                             </div>
                         )
 
-                    })
+                    }, this)
                     
                 }
             </div>
@@ -36,15 +36,16 @@ class ListProduct extends React.Component {
 class ProductMeta extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this._handleDeleteItem = this._handleDeleteItem.bind(this);
+        //this._handleDeleteItem = this._handleDeleteItem.bind(this);
     };
-    _handleDeleteItem(pName) {
-        this.props.notifyDelete(pName);
+    _handleDeleteItem(pData) {
+        this.props.notifyDelete(pData);
     }
     
     render() {
         var self = this;
         var items = this.props.childItems;
+        var category = this.props.category;
         return (
             <div>
                 {
@@ -54,11 +55,11 @@ class ProductMeta extends React.Component {
                             <div className="prod_list_name left" key={i + 1}>{item.productName}</div>
                             <div className="prod_list_amt left" key={i + 2}>Rs.{item.productAmount}</div>
                             <div className="prod_list_item_del left" key={i + 3}>
-                               <a> X </a>
+                               <a  onClick={this._handleDeleteItem.bind(this, {pName: item.productName,pCat:category})}> X </a>
                             </div>
                         </div>
                     )
-                    })
+                    },this)
                 }
             </div>
         );

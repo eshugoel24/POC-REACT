@@ -37,7 +37,7 @@ class AddProduct extends React.Component {
                     <div>
                         Category:
                         <select name="" ref='ddlCategory'>
-                            <option value=""></option>
+                            
                             {
                                 categories.map(function (item, i) {
                                     return <option value={i} key={i}>{item}</option>
@@ -47,7 +47,7 @@ class AddProduct extends React.Component {
                         </select>
                     </div>
                     <div>
-                        Amount: <input type='number' placeholder='Enter amount' ref='txtProductAmount'/>
+                        Amount: <input type='number' placeholder='Enter amount' ref='txtProductAmount' value='100'/>
                     </div>
                 </div>
 

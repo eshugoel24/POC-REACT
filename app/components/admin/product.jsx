@@ -51,8 +51,17 @@ class ProductComponent extends React.Component {
         return groupByCategory;
     };
 
-    _handleDeleteProduct(category, name) {
-        
+    _handleDeleteProduct(productData) {
+        var pCategory = productData.pCat;
+        var pName = productData.pName;
+        var categorizedItems = this.state.categorizedItems;
+        var categoryObj =categorizedItems[pCategory]; 
+        for(var i=0; i<categoryObj.length; i++){
+         if(categoryObj[i].productName.toLowerCase() === pName.toLowerCase()) {
+             categoryObj.splice(i,1);
+         }
+        }
+        this.setState({categorizedItems : categorizedItems});
     };
 
     _handleSearchProduct(key){
