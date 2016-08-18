@@ -12,14 +12,17 @@ class AddProduct extends React.Component {
     };
     _handleProductClick(e){
          e.preventDefault(); 
-        var productControl = this.refs.txtAddProduct;
-        var productName = productControl.value;
-        var categories = this.refs.ddlCategory;
-        var categoryName = categories.options[categories.selectedIndex].text;
+        var productNameControl = this.refs.txtProductName;
+        var productAmountControl = this.refs.txtProductAmount;
+        var productCategoryControl = this.refs.ddlCategory;
+        var productName = productNameControl.value;
+        var categoryName = productCategoryControl.options[productCategoryControl.selectedIndex].text;
+        var productAmount = productAmountControl.value;
         if(productName !== ""){
-            this.props.addProduct(productName,categoryName);
-            productControl.value="";
-            productControl.focus();
+            this.props.addProduct(productName,categoryName, productAmount);
+            productNameControl.value="";
+            productAmountControl.value="";
+            productNameControl.focus();
         }
     };
     render() {
@@ -29,7 +32,7 @@ class AddProduct extends React.Component {
                 <h1>Add Product </h1>
                 <div>
                     <div>
-                        Name: <input type='text' ref='txtAddProduct' placeholder='Enter product name' />
+                        Name: <input type='text' ref='txtProductName' placeholder='Enter product name' />
                     </div>
                     <div>
                         Category:
@@ -42,6 +45,9 @@ class AddProduct extends React.Component {
                             }
 
                         </select>
+                    </div>
+                    <div>
+                        Amount: <input type='number' placeholder='Enter amount' ref='txtProductAmount'/>
                     </div>
                 </div>
 
