@@ -1,15 +1,21 @@
 import React from 'react';
-import ProductReview from '../review/ProductReview';
+import ProductReview from 'ProductReview';
+import Search from 'Search';
+import Cart from 'Cart';
+import Checkout from 'Checkout';
 
-class Dashboard extends React.Component{
-    constructor(props){
+class Dashboard extends React.Component {
+    constructor(props) {
         super(props);
     }
-    render(){
-        return(
+
+    render() {
+        return (
             <div>
                 Dashboard
+                <Search/>
                 <ProductReview/>
+                <Cart/>
             </div>
         );
     }

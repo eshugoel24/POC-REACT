@@ -16,5 +16,6 @@ class MainLayout extends React.Component{
             </div>
         );
     }
-}
+};
+
 export default MainLayout;

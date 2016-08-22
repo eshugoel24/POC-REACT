@@ -15,9 +15,6 @@ $(document).foundation();
 // App css
 require('style!css!sass!applicationStyles')
 
-var data = ['test1', 'test2'];
-var emails = ['vishal@exzeoindia.com', 'rahul@exzeoindia.com'];
-
 ReactDOM.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={MainLayout}>
