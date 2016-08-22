@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+//import FileUpload from './fileupload';
 
 class AddProduct extends React.Component {
     constructor(props, context) {
@@ -29,28 +30,42 @@ class AddProduct extends React.Component {
         var categories = this._getAllCategory();
         return (
             <form>
-                <h1>Add Product </h1>
+                <h4>Manage Product </h4>
                 <div>
                     <div>
-                        Name: <input type='text' ref='txtProductName' placeholder='Enter product name' />
+                        <div>
+                            <label> Name: </label>
+                        </div>
+                        <div>
+                            <input type='text' ref='txtProductName' placeholder='Enter product name' />
+                        </div>
                     </div>
                     <div>
-                        Category:
-                        <select name="" ref='ddlCategory'>
-                            
-                            {
-                                categories.map(function (item, i) {
-                                    return <option value={i} key={i}>{item}</option>
-                                })
-                            }
-
-                        </select>
+                        <div>
+                            <label>Category: </label>
+                        </div>
+                        <div>
+                            <select name="" ref='ddlCategory'>
+                                {
+                                    categories.map(function (item, i) {
+                                        return <option value={i} key={i}>{item}</option>
+                                    })
+                                }
+                            </select>
+                        </div>
                     </div>
                     <div>
-                        Amount: <input type='number' placeholder='Enter amount' ref='txtProductAmount' value='100'/>
+                        <div>
+                            <label> Amount: </label>
+                        </div>
+                        <div>
+                            <input type='number' placeholder='Enter amount' ref='txtProductAmount' value='100'/>
+                        </div>
+                    </div>
+                    <div> 
                     </div>
                 </div>
-
+                    
                 <div>
                     <button onClick={this._handleProductClick}>Add</button>
                 </div>
