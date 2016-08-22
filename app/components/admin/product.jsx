@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AddProduct from './addproduct';
 import ListProduct from './listproduct';
-import SearchQuickFilter from './searchquickfilter'
+import SearchQuickFilter from './searchquickfilter';
 
 class ProductComponent extends React.Component {
     constructor(props, context) {

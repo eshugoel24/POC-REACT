@@ -7,6 +7,7 @@ div.sub_container_left_box{
     padding: 10px;
     margin-left: 10px;
     margin-top:10px;
+    font-size: 8px;
 }
 
 div.sub_container_right_box {
@@ -18,28 +19,16 @@ div.sub_container_right_box {
     margin-top: 10px;
     width:48%;
 }
-
-div.prod_list_grid_col_name {
-    border: solid 1px #000;
-    width:35%;
-    padding-left: 6px;
+.sub_container_left_box button {
+    color:white;
+    background-color: red;
+    width: 100px;
+    height: 30px;
+    border: solid;
+    border-width: 1px;
 }
 
-div.prod_list_grid_col_amt {
-    border: solid 1px #000;
-    width:20%;
-    padding-left: 6px;
-}
-
-div.prod_list_grid_row_del {
-    border: solid 1px #000;
-    width:10%;
-    text-align: center;
-    font-size: 16px;
-    cursor:default;
-}
-
-/*****************************************************************/
+/*****************Quick Filter************************************************/
 
 div.prod_list_category {
     font-weight: bold;
@@ -68,4 +57,49 @@ div.prod_list_item_del {
 
 div.prod_list_item_del a{
     color:red;
+}
+
+/**************************************File Upload*************************/
+h3 {
+  margin-left: 15px;
+}
+.fileInput {
+  border-bottom: 4px solid #d3d3d3;
+  border-right: 4px solid #d3d3d3;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  padding: 10px;
+  margin: 15px;
+  cursor: pointer;
+}
+.imgPreview {
+  text-align: center;
+  margin: 5px 15px;
+  height: 200px;
+  width: 500px;
+  border-left: 1px solid #808080;
+  border-right: 1px solid #808080;
+  border-top: 5px solid #808080;
+  border-bottom: 5px solid #808080;
+}
+.imgPreview img {
+  width: 100%;
+  height: 100%;
+}
+.previewText {
+  width: 100%;
+  margin-top: 20px;
+}
+.previewComponent .submitButton {
+  padding: 12px;
+  margin-left: 10px;
+  background: #fff;
+  border: 4px solid #d3d3d3;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 10pt;
+  cursor: pointer;
+}
+.submitButton:hover {
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
 }
