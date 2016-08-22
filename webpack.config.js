@@ -21,7 +21,8 @@ module.exports = {
     resolve: {
         root: __dirname,
         alias: {
-            MainLayout: 'app/components/MainLayout.jsx',
+          Cart: 'app/cart/CartView.jsx',
+          MainLayout: 'app/components/MainLayout.jsx',
 			applicationStyles: 'app/styles/app.scss',
 			Dashboard: 'app/components/dashboard/Dashboard.jsx',
             Products:'app/components/admin/product.jsx',

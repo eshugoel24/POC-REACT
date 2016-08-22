@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductReview from '../review/ProductReview';
 
 class Dashboard extends React.Component{
     constructor(props){
@@ -8,9 +9,10 @@ class Dashboard extends React.Component{
         return(
             <div>
                 Dashboard
+                <ProductReview/>
             </div>
         );
     }
-}
+};
 
 export default Dashboard;
