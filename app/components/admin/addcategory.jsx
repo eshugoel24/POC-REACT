@@ -21,7 +21,7 @@ render(){
     return(
     <form onSubmit={this._handleAdd}> 
         <div>
-            <h1>Add Categories</h1>
+            <h4>Add Categories</h4>
             <input type='text' placeholder='Add a new category' ref='txtAddCat' />
             <button id='btnAddCategory' onClick={this._handleAdd}> Add</button>
         </div>

@@ -39,14 +39,16 @@ class CategoryComponent extends React.Component{
     render(){
         return(
             <div>
-                <div>
+                <div className="sub_container_left_box left">
                     <AddCategory onAddCatClick={this._handleAddCategory} />
                 </div>
-                <div>
-                    <SearchQuickFilter onSearchCategory={this._handleSearchCategory} />
-                </div>
-                <div>
-                    <ListCategory listItem={this.state.listItem}/>
+                <div className="sub_container_right_box left">
+                    <div>
+                        <SearchQuickFilter onSearchCategory={this._handleSearchCategory} />
+                    </div>
+                    <div>
+                        <ListCategory listItem={this.state.listItem}/>
+                    </div>
                 </div>
             </div>
         );
