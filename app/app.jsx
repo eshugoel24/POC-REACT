@@ -1,9 +1,21 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-import ProductReview from './review/ProductReview';
+var {Route, Router, IndexRoute, hashHistory} = require('react-router');
+import MainLayout from 'MainLayout';
+import Dashboard from 'Dashboard';
 
+// Load foundation
+require('style!css!foundation-sites/dist/foundation.min.css')
+$(document).foundation();
+
+// App css
+require('style!css!sass!applicationStyles')
 
 ReactDOM.render(
-    <ProductReview/>,
+    <Router history={hashHistory}>
+        <Route path="/" component={MainLayout}>
+            <IndexRoute component={Dashboard} />
+        </Route>
+    </Router>, 
     document.getElementById("app")
 );
