@@ -23,7 +23,9 @@ module.exports = {
         alias: {
             MainLayout: 'app/components/MainLayout.jsx',
 			applicationStyles: 'app/styles/app.scss',
-			Dashboard: 'app/components/dashboard/Dashboard.jsx'
+			Dashboard: 'app/components/dashboard/Dashboard.jsx',
+            Products:'app/components/admin/product.jsx',
+            ProductCategory: 'app/components/admin/category.jsx'
         },
         extensions: ['','.js','.jsx']
     },
