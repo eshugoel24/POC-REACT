@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class Product extends React.Component {
 
@@ -22,8 +21,8 @@ class Product extends React.Component {
 			</div>
 		);
 	}
-}
+};
 
-Product.defaultProps = {productName: 'No Product'}
+Product.defaultProps = {productName: 'No Product'};
 
 export default Product;

@@ -31,7 +31,8 @@ module.exports = {
             EmailSelection: 'app/components/checkout/EmailSelection.jsx',
             PaymentInfo: 'app/components/checkout/PaymentInfo.jsx',
             ProductReview: 'app/components/review/ProductReview.jsx',
-            User: 'app/components/review/User.jsx'
+            User: 'app/components/review/User.jsx',
+            Search: 'app/components/admin/searchquickfilter.jsx'
 
         },
         extensions: ['', '.js', '.jsx']

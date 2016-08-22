@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class EmailSelection extends React.Component {
     constructor(props) {
@@ -10,7 +9,7 @@ class EmailSelection extends React.Component {
         if (typeof this.props.addEmail === 'function') {
             this.props.addEmail();
         }
-            
+
     }
 
     render() {
@@ -19,18 +18,18 @@ class EmailSelection extends React.Component {
             <div id="email_selection">
                 <h4>Selected email address will get the download link.</h4>
                 <ul>
-                {
-                    emails.map(function(email){
-                        return <li><input type="radio" name="emailGp" value={email}/>{email}</li>
-                    })
-                }
+                    {
+                        emails.map(function (email) {
+                            return <li><input type="radio" name="emailGp" value={email}/>{email}</li>
+                        })
+                    }
                 </ul>
-                <button onClick={this._addEmail.bind(this)}>Add new email</button>
+                <button onClick={this._addEmail.bind(this) }>Add new email</button>
             </div>
         );
     }
 }
 
-EmailSelection.defaultProps = {emails: ['vishals@exzeoindia.com']};
+EmailSelection.defaultProps = { emails: ['vishals@exzeoindia.com'] };
 
 export default EmailSelection;
