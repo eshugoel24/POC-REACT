@@ -1,6 +1,21 @@
+.clr {
+    clear: both;
+}
 .left {
     float: left;
 }
+.right {
+    float: right;
+}
+
+.defaultMarginLeft {
+    margin-left: 0%;
+}
+
+.defaultMarginRight {
+    margin-right: 0%;
+}
+
 div.sub_container_left_box{
     width:50%;
     border: solid 1px #000;
@@ -20,13 +35,31 @@ div.sub_container_right_box {
     width:48%;
 }
 
-.sub_container_left_box button {
+div.sub_container_left_box button {
     color:white;
     background-color: red;
     width: 100px;
     height: 30px;
     border: solid;
     border-width: 1px;
+    font-size: 15px;
+}
+
+div.product_manage_margin {
+    margin-left: 23%;
+}
+
+.add_product_fn {
+    width:85px;
+    float:left;
+    margin-left: 10%
+}
+.add_product_fv {
+    width:50%;
+    float:left;
+}
+div a {
+    font-size: 14px;
 }
 
 /*****************Quick Filter************************************************/

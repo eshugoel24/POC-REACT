@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom';
-import AddCategory from './addcategory'
-import ListCategory from './listcategory'
-import SearchQuickFilter from './searchquickfilter'
+import AddCategory from './addcategory';
+import ListCategory from './listcategory';
+import SearchQuickFilter from './searchquickfilter';
+import { Link } from 'react-router';
 
 class CategoryComponent extends React.Component{
     constructor(props, context) {
@@ -40,7 +41,10 @@ class CategoryComponent extends React.Component{
         return(
             <div>
                 <div className="sub_container_left_box left">
-                    <AddCategory onAddCatClick={this._handleAddCategory} />
+                    <div>
+                        <AddCategory onAddCatClick={this._handleAddCategory} />
+                    </div>
+                    <div className="right"><Link to="/">Back to Products</Link></div>
                 </div>
                 <div className="sub_container_right_box left">
                     <div>

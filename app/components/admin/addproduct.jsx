@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router'
 //import FileUpload from './fileupload';
 
 class AddProduct extends React.Component {
@@ -33,18 +34,19 @@ class AddProduct extends React.Component {
                 <h4>Manage Product </h4>
                 <div>
                     <div>
-                        <div>
+                        <div className="add_product_fn">
                             <label> Name: </label>
                         </div>
-                        <div>
+                        <div className="add_product_fv">
                             <input type='text' ref='txtProductName' placeholder='Enter product name' />
                         </div>
                     </div>
+                    <div className="clr"></div>
                     <div>
-                        <div>
+                        <div className="add_product_fn">
                             <label>Category: </label>
                         </div>
-                        <div>
+                        <div className="add_product_fv">
                             <select name="" ref='ddlCategory'>
                                 {
                                     categories.map(function (item, i) {
@@ -53,20 +55,22 @@ class AddProduct extends React.Component {
                                 }
                             </select>
                         </div>
+                        <div> <Link to="/category"> Add Category </Link></div>
                     </div>
+                    <div className="clr"></div>
                     <div>
-                        <div>
+                        <div className="add_product_fn">
                             <label> Amount: </label>
                         </div>
-                        <div>
+                        <div className="add_product_fv">
                             <input type='number' placeholder='Enter amount' ref='txtProductAmount' value='100'/>
                         </div>
                     </div>
                     <div> 
                     </div>
                 </div>
-                    
-                <div>
+                <div className="clr"></div>
+                <div className="product_manage_margin">
                     <button onClick={this._handleProductClick}>Add</button>
                 </div>
             </form>
