@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import AddProduct from './addproduct';
 import ListProduct from './listproduct';
 import SearchQuickFilter from './searchquickfilter';
+import Axios from 'axios';
 
 class ProductComponent extends React.Component {
     constructor(props, context) {
@@ -17,16 +18,51 @@ class ProductComponent extends React.Component {
         this._handleAddProduct = this._handleAddProduct.bind(this);
         this._handleSearchProduct = this._handleSearchProduct.bind(this);
         this._handleDeleteProduct = this._handleDeleteProduct.bind(this);
+        //this._loadProducts(); 
+    };
+    
+    componentDidMount() {
+        this._loadProducts();
+    }
+    
+    _loadProducts() {
+        var self = this;
+        const STATUS_OK = 200;
+        Axios.get('/api/products')
+            .then(function (response) {
+                if(response && response.status === STATUS_OK){
+                    if(response.data){
+                        //iterate into products
+                        var productList = [];
+                        response.data.map(function(product, index){
+                            productList.push(
+                            {
+                                productName: product.productname,
+                                productCategory: product.category[0],
+                                productAmount: product.price
+                            });
+                        });
+                        self.orgProdArray = productList;
+                        self._setProductState(productList);
+                    }
+                }
+                else {
+                    console.log('Error');
+                }
+            });
+    };
+    _setProductState(productList){
+        var groupByCategory = this._groupByCategory(productList);
+        this.setState({ listItems: productList });
+        this.setState({categorizedItems : groupByCategory});
+        this.setState({ categories: groupByCategory.allCategories });
     };
     _handleAddProduct(pName, pCategory, pAmount){
         this.state.listItems.push({productName: pName, productCategory: pCategory, productAmount: pAmount});
         this.orgProdArray = this.state.listItems;
         
         var groupByCategory = this._groupByCategory(this.orgProdArray);
-        
-        this.setState({ listItems: this.state.listItems});
-        this.setState({categories: groupByCategory.allCategories});
-        this.setState({categorizedItems : groupByCategory});
+        this._setProductState(this.orgProdArray);
     };
     
     _groupByCategory(prodArr){
@@ -65,12 +101,12 @@ class ProductComponent extends React.Component {
     };
 
     _handleSearchProduct(key){
-        var searchTerm = key;
+        var searchTerm = key.toLowerCase();
         var prodArray = this.orgProdArray;
         
         var results = [];
         for (var i = 0; i < prodArray.length; i++) {
-            if ((prodArray[i].productName.indexOf(searchTerm) >= 0)) {
+            if ((prodArray[i].productName.toLowerCase().indexOf(searchTerm) >= 0)) {
                 results.push(prodArray[i]);
             }
         }
