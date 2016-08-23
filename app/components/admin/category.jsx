@@ -44,7 +44,7 @@ class CategoryComponent extends React.Component{
                     <div>
                         <AddCategory onAddCatClick={this._handleAddCategory} />
                     </div>
-                    <div className="right"><Link to="/">Back to Products</Link></div>
+                    <div className="right"><Link to="/product">Back to Products</Link></div>
                 </div>
                 <div className="sub_container_right_box left">
                     <div>
