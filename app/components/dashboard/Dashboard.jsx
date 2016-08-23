@@ -3,6 +3,7 @@ import ProductReview from 'ProductReview';
 import Search from 'Search';
 import Cart from 'Cart';
 import Checkout from 'Checkout';
+import ProductList from 'ProductList';
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -12,10 +13,10 @@ class Dashboard extends React.Component {
     render() {
         return (
             <div>
-                Dashboard
                 <Search/>
                 <ProductReview/>
                 <Cart/>
+                <ProductList/>
             </div>
         );
     }

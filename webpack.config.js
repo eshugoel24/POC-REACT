@@ -32,7 +32,9 @@ module.exports = {
             PaymentInfo: 'app/components/checkout/PaymentInfo.jsx',
             ProductReview: 'app/components/review/ProductReview.jsx',
             User: 'app/components/review/User.jsx',
-            Search: 'app/components/admin/searchquickfilter.jsx'
+            Search: 'app/components/admin/searchquickfilter.jsx',
+            ProductList: 'app/components/product/ProductList.jsx',
+            Login: 'app/components/account/Login.jsx'
 
         },
         extensions: ['', '.js', '.jsx']
