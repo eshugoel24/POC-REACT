@@ -11,10 +11,9 @@ class Checkout extends React.Component {
         var self = this;
         var newEmail = prompt("Enter new email:");
         var emails = this.state.emails;
-        
+
         if (newEmail !== null) {
             if (self._validateEmail(newEmail)) {
-                debugger;
                 emails.push(newEmail);
                 self.setState({ emails: emails });
             } else {
@@ -31,7 +30,9 @@ class Checkout extends React.Component {
 
     render() {
         var userEmails = this.state.emails;
-        return this.props.children;
+        return (
+            <Email emails={userEmails} addEmail={this._addEmail.bind(this) } />
+        );
     }
 
 };

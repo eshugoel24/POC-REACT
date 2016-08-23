@@ -7,11 +7,11 @@ class UserProfile extends React.Component {
 
     render() {
         return (
-            <div>User - {this.props.username}</div>
+            <div>User - {this.props.reviewdby}</div>
         );
     }
 };
 
-UserProfile.defaultProps = { username: 'Guest' };
+UserProfile.defaultProps = { reviewdby: 'Guest' };
 
 export default UserProfile;

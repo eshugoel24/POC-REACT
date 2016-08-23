@@ -66,6 +66,18 @@ apiRouter.get('/products/:id/reviews', function(request, response) {
         return response.json(results);
     });
 });
+
+apiRouter.post('/products/addreview', function(request, response) {
+    var reviews = require('./dal/repositories/reviews');
+    var comment = request.body['comment'];
+    var reviewBy = request.body['reviewby'];
+
+    reviews.addReview(1, reviewBy, comment, function(results) {
+        return response.json(results);
+    });
+
+});
+
 app.use('/api', apiRouter);
 app.listen(PORT, function() {
     console.log('Express server is up and running on port ' + PORT);
