@@ -7,6 +7,7 @@ import Email from 'EmailSelection'
 import PaymentInfo from 'PaymentInfo';
 import MainLayout from 'MainLayout';
 import Dashboard from 'Dashboard';
+import Login from 'Login';
 
 // Load foundation
 require('style!css!foundation-sites/dist/foundation.min.css')
@@ -15,19 +16,17 @@ $(document).foundation();
 // App css
 require('style!css!sass!applicationStyles')
 
-var data = ['test1', 'test2'];
-var emails = ['vishal@exzeoindia.com', 'rahul@exzeoindia.com'];
-
 ReactDOM.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={MainLayout}>
-			<IndexRoute component={Dashboard} />
+			<IndexRoute component={Login} />
+			<Route path="dashboard" name="dashboard" component={Dashboard}/>
 		</Route>
 		<Route path="cart" component={() => <Cart productNames={data}/>} >
 			<IndexRoute component={() => <Cart productNames={data}/>} />
 		</Route>
-		<Route path="checkout" component={Checkout} >
-			<IndexRoute component={() => <Email emails={emails}/>} />
+		<Route path="checkout" name="checkout" component={Checkout} >
+			<IndexRoute component={Email}/>
 			<Route path="payment" component={PaymentInfo}/>
 		</Route>
 	</Router>, document.getElementById("app")

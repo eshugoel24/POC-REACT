@@ -1,16 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {Link} from 'react-router';
 
 class CheckoutButton extends React.Component {
-	_redirect() {
-    	window.location = '#/checkout';
-  	}
-
 	render() {
 		return (
-			<button type="button" onClick={this._redirect}>Checkout</button>
+			<Link to="checkout"><button type="button">Checkout</button></Link>
 		);
 	}
-}
+};
 
 export default CheckoutButton;

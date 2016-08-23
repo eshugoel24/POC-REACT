@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class Product extends React.Component {
 
@@ -18,12 +17,12 @@ class Product extends React.Component {
 		return (
 			<div id="productInCart">
 				<input type="text" value={productName}/>
-				<button type="button" onClick={this._remove.bind(this)}>Remove</button>
+				<button type="button" onClick={this._remove.bind(this) }>Remove</button>
 			</div>
 		);
 	}
-}
+};
 
-Product.defaultProps = {productName: 'No Product'}
+Product.defaultProps = { productName: 'No Product' };
 
 export default Product;
