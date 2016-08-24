@@ -8,6 +8,8 @@ import PaymentInfo from 'PaymentInfo';
 import MainLayout from 'MainLayout';
 import Dashboard from 'Dashboard';
 import Login from 'Login';
+import Products from 'Products';
+import Categories from 'ProductCategory';
 
 // Load foundation
 require('style!css!foundation-sites/dist/foundation.min.css')
@@ -28,6 +30,12 @@ ReactDOM.render(
 		<Route path="checkout" name="checkout" component={Checkout} >
 			<IndexRoute component={Email}/>
 			<Route path="payment" component={PaymentInfo}/>
+		</Route>
+		<Route path="products" name="products" component={Products}>
+			<IndexRoute component={Products} />
+		</Route>
+		<Route path="category" name="category" component={Categories}>
+			<IndexRoute component={Categories} />
 		</Route>
 	</Router>, document.getElementById("app")
 );
