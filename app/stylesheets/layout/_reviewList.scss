@@ -1,0 +1,20 @@
+.reviewMain {
+    width: 30%;
+    padding: 10px;
+
+    ul li {
+        border-bottom: #f9f9f9 solid 1px;
+        padding: 10px;
+        transition: background-color 500ms ease-out 1s;
+
+        &:hover {
+            background: #fdfdfd;
+        }
+    }
+
+    .addReview {
+        background: #f9f9f9;
+        padding: 10px;
+        border-top: #ccc solid 3px;
+    }
+}

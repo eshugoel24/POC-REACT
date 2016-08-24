@@ -1,0 +1,6 @@
+
+.header {
+    background: #2874f0;
+    @include pos-fixed();
+    z-index: 2;
+}

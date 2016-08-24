@@ -1,0 +1,5 @@
+input[type="text"] {
+    @include type-text();
+    margin: 0 10px 15px 0;
+    width: 50%;
+}

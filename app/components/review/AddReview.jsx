@@ -16,7 +16,6 @@ class AddReview extends React.Component {
         var self = this;
 
         axios.get('api/products/' + this.props.product_id + '/reviews').then(function (response) {
-            debugger
             self.setState({ values: response.data });
         }).catch(function (err) {
 
@@ -47,8 +46,10 @@ class AddReview extends React.Component {
         return (
             <div>
                 <ReviewList values={this.state.values}/>
+                <div className="addReview">
                 <textarea ref="review" style={{ padding: 5 }} row="10" cols="50" placeholder="Add product review"></textarea><br/>
                 <button onClick={this._onAddReviewClick}>Add Review</button>
+                </div>
             </div>
         );
     }
