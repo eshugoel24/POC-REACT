@@ -1,0 +1,12 @@
+.search {
+    background: #f9f9f9;
+    padding: 10px;
+    text-align: center;
+
+    input[type="text"] {
+        @include type-text();
+        width: 50%;
+        padding: .8rem;
+        margin-bottom: 0px;
+    }
+}

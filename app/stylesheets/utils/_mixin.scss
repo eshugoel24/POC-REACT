@@ -1,0 +1,29 @@
+@mixin pos-fixed() {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+}
+
+@mixin pos-absolute() {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+}
+
+@mixin type-text() {
+    background: #fff;
+    border: #ddd solid 1px;
+    padding: .5rem;
+    font: normal 13px 'arial';
+}
+
+@mixin button() {
+    background: #3c83fe;
+    border-radius: 1rem;
+    padding: 0.4rem .5rem;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+}
