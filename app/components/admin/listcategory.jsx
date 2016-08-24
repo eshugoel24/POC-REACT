@@ -15,7 +15,7 @@ class ListCategory extends React.Component{
                 <ul>
                 {
                     items.map(function(item, i) {
-                    return <li key={i}>{item}</li>
+                    return <li key={item._id}>{item.categoryname}</li>
                     })
                 }
                 </ul>

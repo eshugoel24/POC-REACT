@@ -26,7 +26,11 @@ app.use(express.static('public'));
 // Validate user
 apiRouter.post('/auth', loginRoute.authenticate);
 //Get all products
-apiRouter.get('/products', adminRoute.allProducts);
+apiRouter.get('/products', adminRoute.getAllProducts);
+//Add product category
+apiRouter.post ('/addprodcat', adminRoute.addProductCategory);
+//Get all category
+apiRouter.get('/categories', adminRoute.getAllCategories);
 //Get product by id
 apiRouter.get('/products/:id', adminRoute.getProductById);
 //Get all reviews of specific product
