@@ -11,7 +11,7 @@ class SearchQuickFilter extends React.Component {
     };
     render() {
         return (
-            <div>
+            <div className="search">
                 <input  type='text' 
                         placeholder='Search...' 
                         ref='txtSearchQuickFilter'

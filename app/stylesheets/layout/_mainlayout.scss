@@ -1,0 +1,8 @@
+.mainLayout {
+    background: #fff;
+    @include pos-absolute();
+    top: 53px;
+    bottom: 38px;
+    z-index: 1;
+    overflow-y: auto;
+}
