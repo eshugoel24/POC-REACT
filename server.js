@@ -1,4 +1,8 @@
 var express = require('express');
+var loginRoute = require('./routes/login');
+var adminRoute = require('./routes/admin');
+var dashboardRoute = require('./routes/dashboard');
+
 var app = express();
 var bodyParser = require("body-parser");
 const PORT = process.env.PORT || 8989;
@@ -19,64 +23,16 @@ app.use(bodyParser.json());
 var db = require('./dal/dbconnection').getDBConnection();
 app.use(express.static('public'));
 
-/*VALIDATE USER*/
-apiRouter.post('/auth', function(request, response) {
-    var users = require('./dal/repositories/users');
-    var userName = request.body.username;
-    var password = request.body.password;
-    var util = require('./util');
-    users.validateUser(userName, function(users) {
-        if (users.length > 0) {
-            if (users[0].password === password) {
-                var jwtToken = util.generateJWT(users[0]);
-                return response.json({
-                    token: jwtToken,
-                    success: true
-                });
-            } else {
-                return response.json({
-                    success: false
-                });
-            }
-        } else {
-            return response.json({
-                success: false
-            });
-        }
-    });
-});
-/*GET ALL PRODUCTS*/
-apiRouter.get('/products', function(request, response) {
-    var products = require('./dal/repositories/products');
-    products.getAll(function(results) {
-        return response.json(results);
-    });
-});
-/*GET PRODUCT BY ID*/
-apiRouter.get('/products/:id', function(request, response) {
-    var products = require('./dal/repositories/products');
-    products.getProduct(request.params.id, function(results) {
-        return response.json(results);
-    });
-});
-/*GET REVIEWS OF SPECIFIC PRODUCT*/
-apiRouter.get('/products/:id/reviews', function(request, response) {
-    var reviews = require('./dal/repositories/reviews');
-    reviews.getAll(request.params.id, function(results) {
-        return response.json(results);
-    });
-});
-
-apiRouter.post('/products/addreview', function(request, response) {
-    var reviews = require('./dal/repositories/reviews');
-    var comment = request.body['comment'];
-    var reviewBy = request.body['reviewby'];
-
-    reviews.addReview(1, reviewBy, comment, function(results) {
-        return response.json(results);
-    });
-
-});
+// Validate user
+apiRouter.post('/auth', loginRoute.authenticate);
+//Get all products
+apiRouter.get('/products', adminRoute.allProducts);
+//Get product by id
+apiRouter.get('/products/:id', adminRoute.getProductById);
+//Get all reviews of specific product
+apiRouter.get('/products/:id/reviews', dashboardRoute.productAllReviews);
+//Add product review
+apiRouter.post('/products/addreview', dashboardRoute.addProductReview);
 
 app.use('/api', apiRouter);
 app.listen(PORT, function() {
