@@ -9,14 +9,17 @@ class ReviewList extends React.Component {
     render() {
         var reviews = this.props.values;
         var date = new Date().toLocaleDateString();
-        
+
         return (
             <div>
-                {reviews.map(function (item) {
-                    return <div key={item._id}><UserProfile/>
-                        Review -  {item.comment}
-                        <p style={{ color: 'gray' }}>added on {date}</p></div>
-                }) }
+                <ul>
+                    {reviews.map(function (item) {
+                        return <li key={item._id}><UserProfile/>
+                            Review -  {item.comment}
+                            <p style={{ color: 'gray' }}>added on {date}</p></li>
+                    }) }
+
+                </ul>
             </div>
         );
     }

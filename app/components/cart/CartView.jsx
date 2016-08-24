@@ -29,7 +29,7 @@ class Cart extends React.Component {
 		var productNames = this.state.productNames;
 		var self = this;
 		return (
-			<div id="cart">
+			<div id="cart" className="cartMain right">
                 <h4>Your Cart</h4>
 				{
 					productNames.map(function (product) {

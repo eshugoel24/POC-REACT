@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import 'dist/stylesheets/main.css'
+
 class Login extends React.Component {
     constructor() {
         super();
@@ -28,12 +30,14 @@ class Login extends React.Component {
 
     render() {
         return (
+            <div className="login-container">
             <form onSubmit={this._onSubmit}>
-                <input type='text' ref='username' placeholder='username'></input><br/>
-                <input type='password' ref='password' placeholder='password'></input><br/>
-                <button type='submit'>Login</button>
+                <input className="type-text" type='text' ref='username' placeholder='username'></input><br/>
+                <input className="type-text" type='password' ref='password' placeholder='password'></input><br/>
+                <button className="button" type='submit'>Login</button>
                 <p style={{ color: 'red' }}>{this.state.message}</p>
             </form>
+            </div>
         );
     }
 };
