@@ -63,7 +63,7 @@ class AddProduct extends React.Component {
                             <label> Amount: </label>
                         </div>
                         <div className="add_product_fv">
-                            <input type='number' placeholder='Enter amount' ref='txtProductAmount' value='100'/>
+                            <input type='text' placeholder='Enter amount' ref='txtProductAmount' value='100'/>
                         </div>
                     </div>
                     <div> 
@@ -71,7 +71,7 @@ class AddProduct extends React.Component {
                 </div>
                 <div className="clr"></div>
                 <div className="product_manage_margin">
-                    <button onClick={this._handleProductClick}>Add</button>
+                    <button className="btn-primary" onClick={this._handleProductClick}>Add</button>
                 </div>
             </form>
         );

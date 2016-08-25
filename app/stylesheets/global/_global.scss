@@ -12,6 +12,15 @@ ul, li {
     margin: 0px;
 }
 
+a {
+    color: #337ab7;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 .left {
     float: left;
 }
