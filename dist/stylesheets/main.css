@@ -16,6 +16,16 @@ ul, li {
 .right {
   float: right; }
 
+::-webkit-scrollbar-track {
+  background-color: #E6E6E6; }
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5; }
+
+::-webkit-scrollbar-thumb {
+  background-color: #a2a2a2; }
+
 .login-container {
   background: #fff;
   width: 29rem;
@@ -150,7 +160,14 @@ input[type="text"], input[type="password"] {
 .cartMain {
   width: 21.78%;
   padding: 10px;
-  background: #f1f1f1; }
+  background: #f1f1f1;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  top: 63px;
+  bottom: 0px;
+  left: inherit; }
   .cartMain input[type="text"] {
     width: 60%; }
 
