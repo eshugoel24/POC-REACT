@@ -1,20 +1,34 @@
 .reviewMain {
     width: 30%;
     padding: 10px;
+    @include pos-absolute();
+    left: 46%;
+    top: 63px;
+    bottom: 0px;
+    background: #fff;
 
     ul li {
         border-bottom: #f9f9f9 solid 1px;
         padding: 10px;
-        transition: background-color 500ms ease-out 1s;
+        transition: all 0.5s;
 
         &:hover {
             background: #fdfdfd;
         }
     }
 
+    .reviewList {
+        @include pos-absolute();
+        overflow-y: auto;
+        bottom: 105px;
+    }
+
     .addReview {
         background: #f9f9f9;
         padding: 10px;
         border-top: #ccc solid 3px;
+        @include pos-absolute();
+        top: inherit;
+        bottom: 0px;
     }
 }

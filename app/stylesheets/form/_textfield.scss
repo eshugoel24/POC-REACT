@@ -1,5 +1,5 @@
-input[type="text"] {
+input[type="text"], input[type="password"] {
     @include type-text();
     margin: 0 10px 15px 0;
-    width: 50%;
+    width: 90%;
 }

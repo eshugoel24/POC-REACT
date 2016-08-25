@@ -1,4 +1,9 @@
 .productMain {
-    width: 45%;
+    width: 44.8%;
     padding: 10px;
+    @include pos-absolute();
+    bottom: 0px;
+    top: 63px;
+    background: $white ;
+    overflow-y: auto;
 }
