@@ -119,10 +119,11 @@ class ProductComponent extends React.Component {
     render() {
         return (
             <div>
-                <div className="sub_container_left_box left">
+            <div className="header"><h1>Header</h1></div>
+                <div className="addProductMain left">
                     <AddProduct addProduct={this._handleAddProduct} />
                 </div>
-                <div className="sub_container_right_box left">
+                <div className="addProductListMain left">
                     <div>
                         <SearchQuickFilter onSearchCategory={this._handleSearchProduct} />
                     </div>
@@ -130,6 +131,7 @@ class ProductComponent extends React.Component {
                         <ListProduct categorizedItems={this.state.categorizedItems} productCategories={this.state.categories} onDeleteItem={this._handleDeleteProduct}/>
                     </div>
                 </div>
+                <div className="footer"><p>&copy; Copyright 2016</p></div>
             </div>
         );
     }

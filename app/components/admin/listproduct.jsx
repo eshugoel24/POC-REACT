@@ -19,7 +19,7 @@ class ListProduct extends React.Component {
                     categories.map(function(category, i){
                     return (
                             <div>
-                                <div className="prod_list_category left" key={i}>{category}</div>        
+                                <label key={i}>{category}</label>        
                                 <ProductMeta key={category} category={category} childItems={items[category]} notifyDelete={self._handleDeleteItem} {...this.props} />
                             </div>
                         )
@@ -51,13 +51,13 @@ class ProductMeta extends React.Component {
                 {
                     items.map(function(item, i) {
                     return (
-                        <div className="prod_list_name_amt_wrapper left">
-                            <div className="prod_list_name left" key={i + 1}>{item.productName}</div>
-                            <div className="prod_list_amt left" key={i + 2}>Rs.{item.productAmount}</div>
-                            <div className="prod_list_item_del left" key={i + 3}>
-                               <a  onClick={this._handleDeleteItem.bind(this, {pName: item.productName,pCat:category})}> X </a>
-                            </div>
-                        </div>
+                        <ul className="">
+                            <li key={i + 1}>{item.productName}</li>
+                            <li key={i + 2}>Rs.{item.productAmount}</li>
+                            <li key={i + 3}>
+                               <a href="javascript:void(0);" onClick={this._handleDeleteItem.bind(this, {pName: item.productName,pCat:category})}> X </a>
+                            </li>
+                        </ul>
                     )
                     },this)
                 }

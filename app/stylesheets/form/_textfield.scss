@@ -1,4 +1,4 @@
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], select {
     @include type-text();
     margin: 0 10px 15px 0;
     width: 90%;

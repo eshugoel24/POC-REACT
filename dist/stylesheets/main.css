@@ -10,6 +10,12 @@ ul, li {
   padding: 0px;
   margin: 0px; }
 
+a {
+  color: #337ab7;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+
 .left {
   float: left; }
 
@@ -66,7 +72,7 @@ button {
       background-color: #286090;
       border-color: #204d74; }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], select {
   background: #fff;
   border: #fff solid 1px;
   padding: .8rem;
@@ -76,7 +82,7 @@ input[type="text"], input[type="password"] {
   transition: all 0.5s;
   margin: 0 10px 15px 0;
   width: 90%; }
-  input[type="text"]:hover, input[type="password"]:hover {
+  input[type="text"]:hover, input[type="password"]:hover, select:hover {
     background: #dfe9ec;
     color: #414848; }
 
@@ -170,6 +176,36 @@ input[type="text"], input[type="password"] {
   left: inherit; }
   .cartMain input[type="text"] {
     width: 60%; }
+
+.addProductMain {
+  width: 48%;
+  background: #fff;
+  padding: 15px;
+  margin-top: 55px; }
+  .addProductMain label {
+    padding: 5px 0;
+    display: block;
+    color: #999;
+    font-weight: 900; }
+
+.addProductListMain {
+  width: 48%;
+  background: #fff;
+  padding: 15px;
+  margin-top: 55px; }
+  .addProductListMain label {
+    padding: 5px 0;
+    display: block;
+    color: #999;
+    font-weight: 900;
+    clear: left; }
+  .addProductListMain ul {
+    overflow: hidden;
+    border-bottom: #ccc solid 1px;
+    width: 100%; }
+    .addProductListMain ul li {
+      float: left;
+      padding: 10px; }
 
 .search {
   background: #f9f9f9;
