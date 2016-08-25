@@ -23,7 +23,7 @@ render(){
         <div>
             <h4>Add Categories</h4>
             <input type='text' placeholder='Add a new category' ref='txtAddCat' />
-            <button id='btnAddCategory' onClick={this._handleAdd}> Add</button>
+            <button className="btn-primary" onClick={this._handleAdd}> Add</button>
         </div>
     </form>
     )
