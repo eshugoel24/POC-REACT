@@ -18,9 +18,7 @@ class MainLayout extends React.Component{
                 </main>
                 </div>
                 <div className="footer">
-                    <ul>
-                        <li>&copy; Copyright 2016.</li>
-                    </ul>
+                    <p>&copy; Copyright 2016.</p>
                 </div>
             </div>
         );

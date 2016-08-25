@@ -16,14 +16,19 @@
         overflow: hidden;
         border-bottom: #ccc solid 1px;
         width: 100%;
-        
+
         li {
             float: left;
             padding: 10px;
         }
     }
 
-    input[type="text"] {
-        
+    .search input[type="text"] {
+        width: 97%;
+    }
+
+    .productManageList {
+        max-height: 500px;
+        overflow-y: auto;
     }
 }

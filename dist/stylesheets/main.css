@@ -1,5 +1,5 @@
 body {
-  background: #ccc;
+  background: #f1f2f4;
   font-family: arial;
   font-size: 13px;
   font-weight: normal;
@@ -206,6 +206,11 @@ input[type="text"], input[type="password"], select {
     .addProductListMain ul li {
       float: left;
       padding: 10px; }
+  .addProductListMain .search input[type="text"] {
+    width: 97%; }
+  .addProductListMain .productManageList {
+    max-height: 500px;
+    overflow-y: auto; }
 
 .search {
   background: #f9f9f9;

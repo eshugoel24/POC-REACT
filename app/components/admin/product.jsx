@@ -138,7 +138,7 @@ class ProductComponent extends React.Component {
     render() {
         return (
             <div>
-            <div className="header"><h1>Header</h1></div>
+           <div className="header"><h1>Header</h1></div>
                 <div className="addProductMain left">
                     <AddProduct productCategories={this.state.uniqueCategories} addProduct={this._handleAddProduct} />
                 </div>
