@@ -31,7 +31,6 @@ class AddProduct extends React.Component {
         var categories = this._getAllCategory();
         return (
             <form>
-                <h4>Manage Product </h4>
                 <div>
                     <div>
                         <div className="add_product_fn">
