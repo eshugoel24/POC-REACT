@@ -4,6 +4,7 @@ import AddProduct from './addproduct';
 import ListProduct from './listproduct';
 import SearchQuickFilter from './searchquickfilter';
 import Axios from 'axios';
+import * as Api from '../../../api/adminAPI';
 
 class ProductComponent extends React.Component {
     constructor(props, context) {
@@ -13,44 +14,52 @@ class ProductComponent extends React.Component {
         this.state = {
             listItems : [],
             categories : [],
-            categorizedItems : []
+            categorizedItems : [],
+            uniqueCategories : []
         };
         this._handleAddProduct = this._handleAddProduct.bind(this);
         this._handleSearchProduct = this._handleSearchProduct.bind(this);
         this._handleDeleteProduct = this._handleDeleteProduct.bind(this);
-        //this._loadProducts(); 
+        this._onProductsGetSuccess = this._onProductsGetSuccess.bind(this);
+        this._onCategoriesGetSuccess = this._onCategoriesGetSuccess.bind(this);
     };
     
     componentDidMount() {
-        this._loadProducts();
+        Api.getCategories(this._onCategoriesGetSuccess);
+        Api.getAllProducts(this._onProductsGetSuccess);
     }
     
-    _loadProducts() {
-        var self = this;
-        const STATUS_OK = 200;
-        Axios.get('/api/products')
-            .then(function (response) {
-                if(response && response.status === STATUS_OK){
-                    if(response.data){
-                        //iterate into products
-                        var productList = [];
-                        response.data.map(function(product, index){
-                            productList.push(
-                            {
-                                productName: product.productname,
-                                productCategory: product.category[0],
-                                productAmount: product.price
-                            });
-                        });
-                        self.orgProdArray = productList;
-                        self._setProductState(productList);
-                    }
-                }
-                else {
-                    console.log('Error');
-                }
+    _onProductsGetSuccess(productList){
+        if (productList) {
+            //iterate into products
+            var products = [];
+            productList.map(function(product, index){
+                products.push(
+                {
+                    productName: product.productname,
+                    productCategory: product.category,
+                    productAmount: product.price
+                });
             });
+            this.orgProdArray = products;
+            this._setProductState(products);
+        }
     };
+
+    _onCategoriesGetSuccess(categories){
+        debugger;
+        if (categories) {
+            var uniqueCategories = [];
+            for (var i = 0; i < categories.length; i++) {
+                if (uniqueCategories.indexOf(categories[i].categoryname) === -1) {
+                    uniqueCategories.push(categories[i].categoryname);
+                }
+            }
+            this.setState({ uniqueCategories: uniqueCategories });
+        }
+    };
+
+
     _setProductState(productList){
         var groupByCategory = this._groupByCategory(productList);
         this.setState({ listItems: productList });
@@ -58,11 +67,21 @@ class ProductComponent extends React.Component {
         this.setState({ categories: groupByCategory.allCategories });
     };
     _handleAddProduct(pName, pCategory, pAmount){
-        this.state.listItems.push({productName: pName, productCategory: pCategory, productAmount: pAmount});
-        this.orgProdArray = this.state.listItems;
+        var product = {
+            productName: pName, 
+            productCategory: pCategory, 
+            productAmount: pAmount
+        };
+        try {
+                Api.addProduct(product);
+                this.state.listItems.push(product);
+                this.orgProdArray = this.state.listItems;
+                this._setProductState(this.orgProdArray);
+        }
+        catch (e) {
+            console.log(e);
+        }
         
-        var groupByCategory = this._groupByCategory(this.orgProdArray);
-        this._setProductState(this.orgProdArray);
     };
     
     _groupByCategory(prodArr){
@@ -119,17 +138,15 @@ class ProductComponent extends React.Component {
     render() {
         return (
             <div>
-            <div className="header"><h1>Header</h1></div>
+           <div className="header"><h1>Header</h1></div>
                 <div className="addProductMain left">
-                <h1>Add Product</h1>
-                    <AddProduct addProduct={this._handleAddProduct} />
+                    <AddProduct productCategories={this.state.uniqueCategories} addProduct={this._handleAddProduct} />
                 </div>
                 <div className="addProductListMain left">
-                <h1>Manage Product</h1>
                     <div>
                         <SearchQuickFilter onSearchCategory={this._handleSearchProduct} />
                     </div>
-                    <div className="productManageList">
+                    <div>
                         <ListProduct categorizedItems={this.state.categorizedItems} productCategories={this.state.categories} onDeleteItem={this._handleDeleteProduct}/>
                     </div>
                 </div>

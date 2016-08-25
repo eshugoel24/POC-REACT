@@ -33,3 +33,18 @@ exports.getAllCategories=function(callback){
 		callback(categories);
 	});
 };
+
+//Add a product
+exports.addProduct=function(productParam, callback){
+	var Product = require('../../models/admin/productModel');
+	var product = new Product( {
+		productname:productParam.productName,
+		price:productParam.amount,
+		category:productParam.category
+	});
+	product.save(function (err, product) {
+		if (err) return console.error(err);
+		console.dir(product);
+	});
+	//console.log( product);
+};

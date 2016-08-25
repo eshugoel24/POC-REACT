@@ -9,7 +9,7 @@ class AddProduct extends React.Component {
         this._handleProductClick = this._handleProductClick.bind(this);
     };
     _getAllCategory() {
-        var categories = ["Mobile", "Apparels", "Electronics"];
+        var categories = this.props.productCategories;
         return categories;
     };
     _handleProductClick(e){
@@ -31,21 +31,21 @@ class AddProduct extends React.Component {
         var categories = this._getAllCategory();
         return (
             <form>
+                <h2>Add Product </h2>
                 <div>
                     <div>
-                        <div className="add_product_fn">
+                        <div>
                             <label> Name: </label>
                         </div>
-                        <div className="add_product_fv">
+                        <div>
                             <input type='text' ref='txtProductName' placeholder='Enter product name' />
                         </div>
                     </div>
-                    <div className="clr"></div>
                     <div>
-                        <div className="add_product_fn">
+                        <div>
                             <label>Category: </label>
                         </div>
-                        <div className="add_product_fv">
+                        <div>
                             <select name="" ref='ddlCategory'>
                                 {
                                     categories.map(function (item, i) {
@@ -56,20 +56,16 @@ class AddProduct extends React.Component {
                         </div>
                         <div> <Link to="/category"> Add Category </Link></div>
                     </div>
-                    <div className="clr"></div>
                     <div>
-                        <div className="add_product_fn">
+                        <div>
                             <label> Amount: </label>
                         </div>
-                        <div className="add_product_fv">
-                            <input type='text' placeholder='Enter amount' ref='txtProductAmount' value='100'/>
+                        <div>
+                            <input type='text' placeholder='Enter amount' ref='txtProductAmount' />
                         </div>
                     </div>
-                    <div> 
-                    </div>
                 </div>
-                <div className="clr"></div>
-                <div className="product_manage_margin">
+                <div>
                     <button className="btn-primary" onClick={this._handleProductClick}>Add</button>
                 </div>
             </form>
@@ -78,5 +74,4 @@ class AddProduct extends React.Component {
 
 };
 
-//ReactDOM.render(<AddProduct />, app);
 export default AddProduct;

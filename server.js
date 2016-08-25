@@ -29,6 +29,8 @@ apiRouter.post('/auth', loginRoute.authenticate);
 apiRouter.get('/products', adminRoute.getAllProducts);
 //Add product category
 apiRouter.post ('/addprodcat', adminRoute.addProductCategory);
+//Add a product
+apiRouter.post ('/addproduct', adminRoute.addProduct);
 //Get all category
 apiRouter.get('/categories', adminRoute.getAllCategories);
 //Get product by id

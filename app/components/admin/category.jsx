@@ -4,7 +4,7 @@ import AddCategory from './addcategory';
 import ListCategory from './listcategory';
 import SearchQuickFilter from './searchquickfilter';
 import { Link } from 'react-router';
-import Axios from 'axios';
+import * as Api from '../../../api/adminAPI';
 
 const STATUS_OK = 200;
 
@@ -17,47 +17,29 @@ class CategoryComponent extends React.Component{
         };
         this._handleAddCategory = this._handleAddCategory.bind(this);
         this._handleSearchCategory = this._handleSearchCategory.bind(this);
+        this._onCategoriesGetSuccess = this._onCategoriesGetSuccess.bind(this);
+    }
+
+    _onCategoriesGetSuccess(categoryList){
+        if (categoryList) {
+            var categories = [];
+            categoryList.map(function (category, index) {
+                categories.push(category);
+            });
+            this.orgCatArray = categories;
+            this.setState({ listItem: categories });
+        }        
     }
     
     componentDidMount(){
-        this._getCategories();
+        Api.getCategories(this._onCategoriesGetSuccess);
     };
 
     _handleAddCategory(val){
-        // this.state.listItem.push(val);
-        // this.orgCatArray = this.state.listItem;
-        // this.setState({listItem : this.state.listItem});
-        this._addProductCategory(val);
-        this._getCategories();
+        Api.addCategory(val);
+        Api.getCategories(this._onCategoriesGetSuccess);
     };
-    _getCategories() {
-        var self = this;
-        Axios.get('/api/categories').then(function(response){
-            if(response && response.status === STATUS_OK){
-                if(response.data && response.data.length > 0){
-                    var categories = [];
-                    response.data.map(function(category, index){
-                        categories.push(category);
-                    });
-                    self.orgCatArray = categories;
-                    self.setState({listItem: categories});
-                }
-            }
-        });
-    };
-    _addProductCategory(val) {
-        
-        Axios.post('/api/addprodcat', {categoryName : val}).then(function(response){
-            if(response && response.status === STATUS_OK){
-                if(response.data){
-                    var data = response.data;
-                }
-            }
-            else {
-                alert('Error');
-            }
-        });
-    };
+    
     _handleSearchCategory(key){
         var searchTerm = key.toLowerCase();
         var catArray = this.orgCatArray;
@@ -76,13 +58,14 @@ class CategoryComponent extends React.Component{
     render(){
         return(
             <div>
-                <div className="sub_container_left_box left">
+                <div className="header"><h1>Header</h1></div>
+                <div className="addProductMain left">
                     <div>
                         <AddCategory onAddCatClick={this._handleAddCategory} />
                     </div>
-                    <div className="right"><Link to="/products">Back to Products</Link></div>
+                    <div><Link to="/products">Back to Products</Link></div>
                 </div>
-                <div className="sub_container_right_box left">
+                <div className="addProductListMain left">
                     <div>
                         <SearchQuickFilter onSearchCategory={this._handleSearchCategory} />
                     </div>
@@ -90,6 +73,7 @@ class CategoryComponent extends React.Component{
                         <ListCategory listItem={this.state.listItem}/>
                     </div>
                 </div>
+                <div className="footer"><p>&copy; Copyright 2016</p></div>
             </div>
         );
     };
