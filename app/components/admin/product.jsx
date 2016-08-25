@@ -121,13 +121,15 @@ class ProductComponent extends React.Component {
             <div>
             <div className="header"><h1>Header</h1></div>
                 <div className="addProductMain left">
+                <h1>Add Product</h1>
                     <AddProduct addProduct={this._handleAddProduct} />
                 </div>
                 <div className="addProductListMain left">
+                <h1>Manage Product</h1>
                     <div>
                         <SearchQuickFilter onSearchCategory={this._handleSearchProduct} />
                     </div>
-                    <div>
+                    <div className="productManageList">
                         <ListProduct categorizedItems={this.state.categorizedItems} productCategories={this.state.categories} onDeleteItem={this._handleDeleteProduct}/>
                     </div>
                 </div>
