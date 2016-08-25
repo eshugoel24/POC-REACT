@@ -31,10 +31,12 @@ class Login extends React.Component {
     render() {
         return (
             <div className="login-container">
+            <h1>Login</h1>
+            <p>Fill out the form below to login to my super awesome imaginary control panel.</p>
             <form onSubmit={this._onSubmit}>
                 <input className="type-text" type='text' ref='username' placeholder='username'></input><br/>
                 <input className="type-text" type='password' ref='password' placeholder='password'></input><br/>
-                <button className="button" type='submit'>Login</button>
+                <button className="button btn-primary" type='submit'>Login</button>
                 <p style={{ color: 'red' }}>{this.state.message}</p>
             </form>
             </div>

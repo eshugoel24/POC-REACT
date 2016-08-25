@@ -11,7 +11,7 @@ class ReviewList extends React.Component {
         var date = new Date().toLocaleDateString();
 
         return (
-            <div>
+            <div className="reviewList">
                 <ul>
                     {reviews.map(function (item) {
                         return <li key={item._id}><UserProfile/>

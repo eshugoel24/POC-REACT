@@ -18,28 +18,57 @@ ul, li {
 
 .login-container {
   background: #fff;
-  width: 50rem;
+  width: 29rem;
   margin: 0 auto;
   padding: 1.5rem;
-  margin-top: 15%; }
+  margin-top: 15%;
+  box-shadow: 0px 1px 10px #999; }
 
 button {
-  background: #3c83fe;
-  border-radius: 1rem;
-  padding: 0.4rem .5rem;
-  border: none;
-  color: #fff;
-  font-weight: bold; }
-  button.dissable {
-    background: #ddd; }
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none; }
+  button.btn-default {
+    background: #ccc;
+    border: #ccc solid 1px; }
+    button.btn-default:hover {
+      color: #333;
+      background-color: #e6e6e6;
+      border-color: #adadad; }
+  button.btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4; }
+    button.btn-primary:hover {
+      color: #fff;
+      background-color: #286090;
+      border-color: #204d74; }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
   background: #fff;
-  border: #ddd solid 1px;
-  padding: .5rem;
+  border: #fff solid 1px;
+  padding: .8rem;
   font: normal 13px 'arial';
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 0 white;
+  transition: all 0.5s;
   margin: 0 10px 15px 0;
-  width: 50%; }
+  width: 90%; }
+  input[type="text"]:hover, input[type="password"]:hover {
+    background: #dfe9ec;
+    color: #414848; }
 
 .header {
   background: #2874f0;
@@ -61,7 +90,7 @@ input[type="text"] {
   padding: 10px 0; }
 
 .mainLayout {
-  background: #fff;
+  background: #ccc;
   position: absolute;
   top: 0px;
   right: 0px;
@@ -73,26 +102,57 @@ input[type="text"] {
 
 .reviewMain {
   width: 30%;
-  padding: 10px; }
+  padding: 10px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  left: 46%;
+  top: 63px;
+  bottom: 0px;
+  background: #fff; }
   .reviewMain ul li {
     border-bottom: #f9f9f9 solid 1px;
     padding: 10px;
-    transition: background-color 500ms ease-out 1s; }
+    transition: all 0.5s; }
     .reviewMain ul li:hover {
       background: #fdfdfd; }
+  .reviewMain .reviewList {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    overflow-y: auto;
+    bottom: 105px; }
   .reviewMain .addReview {
     background: #f9f9f9;
     padding: 10px;
-    border-top: #ccc solid 3px; }
+    border-top: #ccc solid 3px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    top: inherit;
+    bottom: 0px; }
 
 .productMain {
-  width: 45%;
-  padding: 10px; }
+  width: 44.8%;
+  padding: 10px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  top: 63px;
+  background: white;
+  overflow-y: auto; }
 
 .cartMain {
-  width: 15%;
+  width: 21.78%;
   padding: 10px;
   background: #f1f1f1; }
+  .cartMain input[type="text"] {
+    width: 60%; }
 
 .search {
   background: #f9f9f9;
@@ -100,11 +160,17 @@ input[type="text"] {
   text-align: center; }
   .search input[type="text"] {
     background: #fff;
-    border: #ddd solid 1px;
-    padding: .5rem;
+    border: #fff solid 1px;
+    padding: .8rem;
     font: normal 13px 'arial';
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 0 white;
+    transition: all 0.5s;
     width: 50%;
     padding: .8rem;
     margin-bottom: 0px; }
+    .search input[type="text"]:hover {
+      background: #dfe9ec;
+      color: #414848; }
 
 /*# sourceMappingURL=main.css.map */

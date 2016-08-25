@@ -1,7 +1,24 @@
 button {
     @include button();
 
-    &.dissable {
-        background: #ddd;
+    &.btn-default {
+        background: #ccc;
+        border: #ccc solid 1px;
+        &:hover {
+            color: #333;
+            background-color: #e6e6e6;
+            border-color: #adadad;
+        }
+    }
+
+    &.btn-primary {
+        color: #fff;
+        background-color: #337ab7;
+        border-color: #2e6da4;
+        &:hover {
+            color: #fff;
+            background-color: #286090;
+            border-color: #204d74;
+        }
     }
 }
