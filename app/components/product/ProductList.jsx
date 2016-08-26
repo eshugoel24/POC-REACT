@@ -4,6 +4,7 @@ import axios from 'axios'
 class ProductList extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = { items: [] };
     }
 
@@ -17,21 +18,24 @@ class ProductList extends React.Component {
         });
     }
 
-    componentWillReceiveProps() {
-        this.setState({ items: this.props.items });
+    _addProductOnClick(item) {
+        this.props.addProduct(item);
     }
 
     render() {
+        var self = this;
+        
         return (
             <div className="productMain left">
-            <ul>
-                {
-                    this.state.items.map(function (item) {
-                        return (<li key={item.productid}>{item.productname}
-                            <p>Rs.{item.price}</p>
-                        </li>)
-                    })
-                }
+                <ul>
+                    {
+                        self.state.items.map(function (item) {
+                            return (<li key={item.productid}>{item.productname}
+                                <p>Rs.{item.price}</p>
+                                <p><button onClick={self._addProductOnClick.bind(self, item) } className='btn-primary'>Add</button></p>
+                            </li>)
+                        })
+                    }
                 </ul>
             </div>
         );

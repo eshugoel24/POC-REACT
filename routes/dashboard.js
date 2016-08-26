@@ -1,8 +1,10 @@
+'use strict';
+
 var path = require('path');
 
 //Get all reviews of specific product 
-exports.productAllReviews = function(request, response){
- var reviews = require(path.join(__dirname, '../dal/repositories/reviews'));
+exports.productAllReviews = function(request, response) {
+    var reviews = require(path.join(__dirname, '../dal/repositories/reviews'));
     reviews.getAll(request.params.id, function(results) {
         return response.json(results);
     });

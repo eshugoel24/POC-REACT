@@ -12,6 +12,7 @@ class ReviewList extends React.Component {
 
         return (
             <div className="reviewList">
+                <h4>Product Reviews</h4>
                 <ul>
                     {reviews.map(function (item) {
                         return <li key={item._id}><UserProfile/>
