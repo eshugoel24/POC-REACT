@@ -6,4 +6,12 @@
     top: 63px;
     background: $white ;
     overflow-y: auto;
+
+    ul {
+        width: 100%;
+
+        li {
+            float: $left;
+        }
+    }
 }
