@@ -24,10 +24,10 @@ class ProductList extends React.Component {
     render() {
         return (
             <div className="productMain left">
-            <ul>
+            <ul className="row">
                 {
                     this.state.items.map(function (item) {
-                        return (<li key={item.productid}>{item.productname}
+                        return (<li className="col-md-4" key={item.productid}>{item.productname}
                             <p>Rs.{item.price}</p>
                         </li>)
                     })
