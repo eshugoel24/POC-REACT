@@ -7,6 +7,7 @@ class ProductReview extends React.Component {
     }
 
     render() {
+
         return (
             <div className="reviewMain left">
                 <AddReview product_id={1}/>

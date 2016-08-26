@@ -10,15 +10,21 @@ import 'dist/stylesheets/main.css'
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
+        this.state = { product: "" };
+        this.addProduct = this.addProduct.bind(this);
+    }
+
+    addProduct(item) {
+        this.setState({ product: item.productname });
     }
 
     render() {
         return (
             <div>
-                <Search />
-                <ProductList/>
+                <Search/>
+                <ProductList addProduct = {this.addProduct}/>
                 <ProductReview/>
-                <Cart/>
+                <Cart product = {this.state.product}/>
             </div>
         );
     }
