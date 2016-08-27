@@ -31,6 +31,8 @@ apiRouter.get('/products', adminRoute.getAllProducts);
 apiRouter.post ('/addprodcat', adminRoute.addProductCategory);
 //Add a product
 apiRouter.post ('/addproduct', adminRoute.addProduct);
+//Delete a product
+apiRouter.delete ('/deleteproduct/:id', adminRoute.deleteProduct);
 //Get all category
 apiRouter.get('/categories', adminRoute.getAllCategories);
 //Get product by id

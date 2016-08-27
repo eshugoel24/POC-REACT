@@ -46,3 +46,12 @@ exports.addProduct = function(request,response){
         return response.json(result);
     });
 };
+
+//Delete a product
+exports.deleteProduct = function(request,response){
+    var productRepo = require(path.join(__dirname, '../dal/repositories/admin/productsRepo'));
+    var id = request.params.id;
+        productRepo.deleteProduct(id, function(result){
+        return response.json(result);
+    });
+};

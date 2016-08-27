@@ -36,6 +36,7 @@ class ProductComponent extends React.Component {
             productList.map(function(product, index){
                 products.push(
                 {
+                productId: product._id,
                     productName: product.productname,
                     productCategory: product.category,
                     productAmount: product.price
@@ -47,7 +48,6 @@ class ProductComponent extends React.Component {
     };
 
     _onCategoriesGetSuccess(categories){
-        debugger;
         if (categories) {
             var uniqueCategories = [];
             for (var i = 0; i < categories.length; i++) {
@@ -107,16 +107,9 @@ class ProductComponent extends React.Component {
     };
 
     _handleDeleteProduct(productData) {
-        var pCategory = productData.pCat;
-        var pName = productData.pName;
-        var categorizedItems = this.state.categorizedItems;
-        var categoryObj =categorizedItems[pCategory]; 
-        for(var i=0; i<categoryObj.length; i++){
-         if(categoryObj[i].productName.toLowerCase() === pName.toLowerCase()) {
-             categoryObj.splice(i,1);
-         }
-        }
-        this.setState({categorizedItems : categorizedItems});
+        var pId = productData.pId;
+       Api.deleteProduct(pId);
+       Api.getAllProducts(this._onProductsGetSuccess);
     };
 
     _handleSearchProduct(key){

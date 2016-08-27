@@ -48,3 +48,23 @@ exports.addProduct=function(productParam, callback){
 	});
 	//console.log( product);
 };
+
+//Delete a product 
+exports.deleteProduct= function(id, callback){
+	var product = require('../../models/admin/productModel');
+	var mongoose = require('mongoose');
+	console.log(id);
+	product.remove({_id: id},function(err,result){
+		if(err){
+			console.log('Error while deleting the document.');
+		}
+		else {
+			console.log('Deleted Successfully. ' );
+			console.log(result);
+		}
+	});
+	// //product.remove({_id: new mongoose.mongo.ObjectID(product.id)}).remove(function(result){
+	// 	console.log('Deleted Successfully. ' );
+	// 	console.log(result);
+	// });
+};

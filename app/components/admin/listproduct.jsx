@@ -51,11 +51,11 @@ class ProductMeta extends React.Component {
                 {
                     items.map(function(item, i) {
                     return (
-                        <ul className="">
+                        <ul>
                             <li key={i + 1}>{item.productName}</li>
                             <li key={i + 2}>Rs.{item.productAmount}</li>
                             <li key={i + 3}>
-                               <a href="javascript:void(0);" onClick={this._handleDeleteItem.bind(this, {pName: item.productName,pCat:category})}> X </a>
+                               <a href="javascript:void(0);" onClick={this._handleDeleteItem.bind(this, {pId: item.productId, pName: item.productName,pCat:category})}> X </a>
                             </li>
                         </ul>
                     )
