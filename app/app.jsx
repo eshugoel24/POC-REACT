@@ -1,6 +1,6 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var {Route, Router, IndexRoute, hashHistory} = require('react-router');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Route, Router, IndexRoute, hashHistory, browserHistory} from 'react-router';
 import Cart from 'Cart';
 import Checkout from 'Checkout';
 import Email from 'EmailSelection'
@@ -12,7 +12,7 @@ import Products from 'Products';
 import Categories from 'ProductCategory';
 
 ReactDOM.render(
-	<Router history={hashHistory}>
+	<Router history={browserHistory}>
 		<Route path="/" component={MainLayout}>
 			<IndexRoute component={Login} />
 			<Route path="dashboard" name="dashboard" component={Dashboard}/>

@@ -1,10 +1,12 @@
+'use strict';
+
 var path = require('path');
 
-exports.authenticate = function (request, response) {
+exports.authenticate = function(request, response) {
     var users = require(path.join(__dirname, '../dal/repositories/users'));
     var userName = request.body.username;
     var password = request.body.password;
-    var util = require(path.join(__dirname,'../util'));
+    var util = require(path.join(__dirname, '../util'));
     users.validateUser(userName, function(users) {
         if (users.length > 0) {
             if (users[0].password === password) {

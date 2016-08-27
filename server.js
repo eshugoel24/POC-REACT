@@ -1,4 +1,7 @@
+'use strict';
+
 var express = require('express');
+var path = require("path");
 var loginRoute = require('./routes/login');
 var adminRoute = require('./routes/admin');
 var dashboardRoute = require('./routes/dashboard');
@@ -6,6 +9,8 @@ var dashboardRoute = require('./routes/dashboard');
 var app = express();
 var bodyParser = require("body-parser");
 const PORT = process.env.PORT || 8989;
+
+require('./webpackHelper')(app);
 
 app.use(function(req, res, next) {
     if (req.headers['x-forwarded-proto'] === 'https') {
@@ -28,7 +33,7 @@ apiRouter.post('/auth', loginRoute.authenticate);
 //Get all products
 apiRouter.get('/products', adminRoute.getAllProducts);
 //Add product category
-apiRouter.post ('/addprodcat', adminRoute.addProductCategory);
+apiRouter.post('/addprodcat', adminRoute.addProductCategory);
 //Add a product
 apiRouter.post ('/addproduct', adminRoute.addProduct);
 //Delete a product
@@ -43,6 +48,12 @@ apiRouter.get('/products/:id/reviews', dashboardRoute.productAllReviews);
 apiRouter.post('/products/addreview', dashboardRoute.addProductReview);
 
 app.use('/api', apiRouter);
+
+app.get('*', function(req, res) {
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
+
+
 app.listen(PORT, function() {
     console.log('Express server is up and running on port ' + PORT);
 });

@@ -3,10 +3,17 @@ import Product from './Product'
 import CheckoutButton from './CheckoutButton'
 
 class Cart extends React.Component {
-
 	constructor(props) {
 		super(props);
-		this.state = { productNames: this.props.productNames };
+		this.state = { productNames: [] };
+	}
+
+    componentWillReceiveProps(props) {
+		var newProductName = props.product;
+		var cartProducts = this.state.productNames;
+		cartProducts.push(newProductName);
+
+		this.setState({ productNames: cartProducts });
 	}
 
 	_removeProductName(PC) {
@@ -21,13 +28,15 @@ class Cart extends React.Component {
 					pNames.splice(index, 1);
 				}
 			});
+
 			self.setState({ productNames: pNames });
         }
 	}
 
 	render() {
-		var productNames = this.state.productNames;
 		var self = this;
+		var productNames = this.state.productNames;
+
 		return (
 			<div id="cart" className="cartMain right">
                 <h4>Your Cart</h4>
@@ -40,10 +49,6 @@ class Cart extends React.Component {
 			</div>
 		);
 	}
-};
-
-Cart.defaultProps = {
-	productNames: ['test1', 'test2']
 };
 
 export default Cart;
