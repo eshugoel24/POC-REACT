@@ -95,7 +95,7 @@ input[type="text"], input[type="password"], select {
   z-index: 2; }
 
 .footer {
-  background: #f1f1f1;
+  background: #d4d4d4;
   position: fixed;
   top: 0px;
   right: 0px;
@@ -178,7 +178,7 @@ input[type="text"], input[type="password"], select {
     width: 60%; }
 
 .addProductMain {
-  width: 48%;
+  width: 40%;
   background: #fff;
   padding: 15px;
   margin-top: 55px; }
@@ -189,10 +189,13 @@ input[type="text"], input[type="password"], select {
     font-weight: 900; }
 
 .addProductListMain {
-  width: 48%;
+  width: 54%;
   background: #fff;
   padding: 15px;
-  margin-top: 55px; }
+  margin-top: 55px;
+  margin-left: 10px;
+  height: 435px;
+  overflow: auto; }
   .addProductListMain label {
     padding: 5px 0;
     display: block;
