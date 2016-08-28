@@ -5,6 +5,7 @@ import ListProduct from './listproduct';
 import SearchQuickFilter from './searchquickfilter';
 import Axios from 'axios';
 import * as Api from '../../../api/adminAPI';
+import Path from 'path';
 
 class ProductComponent extends React.Component {
     constructor(props, context) {
@@ -15,7 +16,8 @@ class ProductComponent extends React.Component {
             listItems : [],
             categories : [],
             categorizedItems : [],
-            uniqueCategories : []
+            uniqueCategories : [],
+            processing:false
         };
         this._handleAddProduct = this._handleAddProduct.bind(this);
         this._handleSearchProduct = this._handleSearchProduct.bind(this);
@@ -25,12 +27,19 @@ class ProductComponent extends React.Component {
     };
     
     componentDidMount() {
-        Api.getCategories(this._onCategoriesGetSuccess);
-        Api.getAllProducts(this._onProductsGetSuccess);
+        this.setState({processing:true});
+        var _this =this;
+        setTimeout(function(){ 
+            Api.getCategories(_this._onCategoriesGetSuccess);
+            Api.getAllProducts(_this._onProductsGetSuccess);
+        }
+        , 3000);
+        
     }
     
     _onProductsGetSuccess(productList){
         if (productList) {
+            this.setState({processing:false});
             //iterate into products
             var products = [];
             productList.map(function(product, index){
@@ -129,6 +138,15 @@ class ProductComponent extends React.Component {
         this.setState({categorizedItems : groupByCategory});
     };
     render() {
+        let processIcon;
+        var processImagePath= Path.join(__dirname,'/images/spinner_60.gif');
+        if(this.state.processing){
+            processIcon = (
+            <div className="processing">
+                <img src={processImagePath} href="#" />
+            </div>
+            );
+        }
         return (
             <div>
            <div className="header"><h1>Header</h1></div>
@@ -139,6 +157,7 @@ class ProductComponent extends React.Component {
                     <div>
                         <SearchQuickFilter onSearchCategory={this._handleSearchProduct} />
                     </div>
+                   {processIcon} 
                     <div>
                         <ListProduct categorizedItems={this.state.categorizedItems} productCategories={this.state.categories} onDeleteItem={this._handleDeleteProduct}/>
                     </div>
