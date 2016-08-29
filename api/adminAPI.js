@@ -50,3 +50,14 @@ export function addProduct(product){
             alert('something went wrong, try after some time' );
     });
 };
+
+export function deleteProduct(id) {
+    Axios.delete('/api/deleteProduct/' + id).then(function(response){
+        if(response){
+
+        }
+        else {
+            console.log('error');
+        }
+    });
+}
