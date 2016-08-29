@@ -1,17 +1,21 @@
 .productMain {
-    width: 44.8%;
+    width: 46%;
     padding: 10px;
     @include pos-absolute();
     bottom: 0px;
     top: 63px;
     background: $white ;
     overflow-y: auto;
+    border-right: #f1f1f1 solid 3px;
 
     ul {
         width: 100%;
+        margin-left: 10px;
 
         li {
-            float: $left;
+            padding: 20px;
+            box-shadow: 1px 1px 5px #ccc;
+            margin: 0 15px 20px 0;
         }
     }
 }

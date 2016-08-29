@@ -150,10 +150,10 @@ class ProductComponent extends React.Component {
         return (
             <div>
            <div className="header"><h1>Header</h1></div>
-                <div className="addProductMain left">
+                <div className="addProductMain col-lg-6 col-md-6 col-sm-6">
                     <AddProduct productCategories={this.state.uniqueCategories} addProduct={this._handleAddProduct} />
                 </div>
-                <div className="addProductListMain left">
+                <div className="addProductListMain col-lg-6 col-md-6 col-sm-6">
                     <div>
                         <SearchQuickFilter onSearchCategory={this._handleSearchProduct} />
                     </div>

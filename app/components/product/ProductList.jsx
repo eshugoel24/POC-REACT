@@ -27,10 +27,12 @@ class ProductList extends React.Component {
         
         return (
             <div className="productMain left">
-                <ul>
+                <ul className="row">
                     {
                         self.state.items.map(function (item) {
-                            return (<li key={item.productid}>{item.productname}
+                            return (<li className="col-md-3" key={item.productid}>
+                                <Image src='' />
+                                {item.productname}
                                 <p>Rs.{item.price}</p>
                                 <p><button onClick={self._addProductOnClick.bind(self, item) } className='btn-primary'>Add</button></p>
                             </li>)
