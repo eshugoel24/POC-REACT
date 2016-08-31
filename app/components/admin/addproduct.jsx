@@ -15,14 +15,23 @@ class AddProduct extends React.Component {
     _handleProductClick(e){
          e.preventDefault(); 
         var productNameControl = this.refs.txtProductName;
+        var productDescriptionControl = this.refs.txtProductDescription;
         var productAmountControl = this.refs.txtProductAmount;
         var productCategoryControl = this.refs.ddlCategory;
         var productName = productNameControl.value;
+        var productDescription = productDescriptionControl.value;
         var categoryName = productCategoryControl.options[productCategoryControl.selectedIndex].text;
         var productAmount = productAmountControl.value;
-        if(productName !== ""){
-            this.props.addProduct(productName,categoryName, productAmount);
+        if(productName !== "" && productAmount !== ""){
+            var product = {
+                productName:productName,
+                productDescription:productDescription,
+                categoryName:categoryName,
+                productAmount:productAmount
+            };
+            this.props.addProduct(product);
             productNameControl.value="";
+            productDescriptionControl.value="";
             productAmountControl.value="";
             productNameControl.focus();
         }
@@ -38,7 +47,15 @@ class AddProduct extends React.Component {
                             <label> Name: </label>
                         </div>
                         <div>
-                            <input type='text' ref='txtProductName' placeholder='Enter product name' />
+                            <input type='text' ref='txtProductName' placeholder='Enter product name here...' />
+                        </div>
+                    </div>
+                     <div>
+                        <div>
+                            <label> Description: </label>
+                        </div>
+                        <div>
+                            <input type='text' ref='txtProductDescription' placeholder='Enter description here...' />
                         </div>
                     </div>
                     <div>

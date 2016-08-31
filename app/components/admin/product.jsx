@@ -14,7 +14,6 @@ class ProductComponent extends React.Component {
         this.allCategories=[];        
         this.state = {
             listItems : [],
-            categories : [],
             categorizedItems : [],
             uniqueCategories : [],
             processing:false
@@ -24,6 +23,7 @@ class ProductComponent extends React.Component {
         this._handleDeleteProduct = this._handleDeleteProduct.bind(this);
         this._onProductsGetSuccess = this._onProductsGetSuccess.bind(this);
         this._onCategoriesGetSuccess = this._onCategoriesGetSuccess.bind(this);
+        this._onProductAddDeleteSuccess = this._onProductAddDeleteSuccess.bind(this);
     };
     
     componentDidMount() {
@@ -33,20 +33,21 @@ class ProductComponent extends React.Component {
             Api.getCategories(_this._onCategoriesGetSuccess);
             Api.getAllProducts(_this._onProductsGetSuccess);
         }
-        , 3000);
+        , 500);
         
     }
     
     _onProductsGetSuccess(productList){
+        this.setState({processing:false});
         if (productList) {
-            this.setState({processing:false});
             //iterate into products
             var products = [];
             productList.map(function(product, index){
                 products.push(
                 {
-                productId: product._id,
+                    productId: product._id,
                     productName: product.productname,
+                    productDescription: product.productdescription,
                     productCategory: product.category,
                     productAmount: product.price
                 });
@@ -68,24 +69,26 @@ class ProductComponent extends React.Component {
         }
     };
 
+    _onProductAddDeleteSuccess(param){
+        Api.getAllProducts(this._onProductsGetSuccess);
+    };
 
     _setProductState(productList){
         var groupByCategory = this._groupByCategory(productList);
         this.setState({ listItems: productList });
         this.setState({categorizedItems : groupByCategory});
-        this.setState({ categories: groupByCategory.allCategories });
     };
-    _handleAddProduct(pName, pCategory, pAmount){
+
+    _handleAddProduct(newProduct){
+        this.setState({processing:true});
         var product = {
-            productName: pName, 
-            productCategory: pCategory, 
-            productAmount: pAmount
+            productName: newProduct.productName, 
+            productDescription: newProduct.productDescription, 
+            productCategory: newProduct.categoryName, 
+            productAmount: newProduct.productAmount
         };
         try {
-                Api.addProduct(product);
-                this.state.listItems.push(product);
-                this.orgProdArray = this.state.listItems;
-                this._setProductState(this.orgProdArray);
+                Api.addProduct(product, this._onProductAddDeleteSuccess);
         }
         catch (e) {
             console.log(e);
@@ -93,32 +96,15 @@ class ProductComponent extends React.Component {
         
     };
     
-    _groupByCategory(prodArr){
-        var max = 0;
-        var groupByCategory = {};
-        this.allCategories = [];
-        for (var i = prodArr.length; --i >= 0;) {
-            var value = prodArr[i];
-           
-            if (groupByCategory[value.productCategory] === undefined) {
-                groupByCategory[value.productCategory] = [value];
-            }
-            else {
-                groupByCategory[value.productCategory].push(value);
-            }
-
-             if(this.allCategories.indexOf(value.productCategory) === -1){
-                this.allCategories.push(value.productCategory);
-            }
-    }
-        groupByCategory.allCategories = this.allCategories;
-        return groupByCategory;
-    };
-
     _handleDeleteProduct(productData) {
+        this.setState({processing:true});
         var pId = productData.pId;
-       Api.deleteProduct(pId);
-       Api.getAllProducts(this._onProductsGetSuccess);
+        try{
+             Api.deleteProduct(pId, this._onProductAddDeleteSuccess);
+        }
+        catch(e){
+            console.log(e);
+        }
     };
 
     _handleSearchProduct(key){
@@ -131,12 +117,32 @@ class ProductComponent extends React.Component {
                 results.push(prodArray[i]);
             }
         }
-        var groupByCategory = this._groupByCategory(results);
-
-        this.setState({ listItems: results });
-        this.setState({categories: groupByCategory.allCategories});
-        this.setState({categorizedItems : groupByCategory});
+        this._setProductState(results);
     };
+
+    _groupByCategory(prodArr) {
+        var max = 0;
+        var groupByCategory = {};
+        this.allCategories = [];
+        for (var i = prodArr.length; --i >= 0;) {
+            var value = prodArr[i];
+
+            if (groupByCategory[value.productCategory] === undefined) {
+                groupByCategory[value.productCategory] = [value];
+            }
+            else {
+                groupByCategory[value.productCategory].push(value);
+            }
+
+            if(this.allCategories.indexOf(value.productCategory) === -1){
+                this.allCategories.push(value.productCategory);
+            }
+        }
+        groupByCategory.allCategories = this.allCategories;
+        return groupByCategory;
+    };
+
+
     render() {
         let processIcon;
         var processImagePath= Path.join(__dirname,'/images/spinner_60.gif');
@@ -159,7 +165,7 @@ class ProductComponent extends React.Component {
                     </div>
                    {processIcon} 
                     <div>
-                        <ListProduct categorizedItems={this.state.categorizedItems} productCategories={this.state.categories} onDeleteItem={this._handleDeleteProduct}/>
+                        <ListProduct categorizedItems={this.state.categorizedItems} onDeleteItem={this._handleDeleteProduct}/>
                     </div>
                 </div>
                 <div className="footer"><p>&copy; Copyright 2016</p></div>
