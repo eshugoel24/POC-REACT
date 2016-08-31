@@ -37,10 +37,10 @@ export function getAllProducts(callback){
         });
 };
 
-export function addProduct(product){
+export function addProduct(product, callback){
     Axios.post('/api/addProduct', product).then(function(response){
         if(response && response.status === STATUS_OK){
-            
+            callback();
             }
             else {
                 alert('Error');
@@ -51,10 +51,10 @@ export function addProduct(product){
     });
 };
 
-export function deleteProduct(id) {
+export function deleteProduct(id, callback) {
     Axios.delete('/api/deleteProduct/' + id).then(function(response){
-        if(response){
-
+        if(response && response.status === STATUS_OK){
+            callback();
         }
         else {
             console.log('error');

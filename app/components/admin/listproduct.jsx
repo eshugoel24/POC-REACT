@@ -12,7 +12,8 @@ class ListProduct extends React.Component {
     render() {
         var self = this;
         var items = this.props.categorizedItems;
-        var categories = this.props.productCategories;
+        //var categories = this.props.productCategories;
+        var categories = (items.allCategories) ?  items.allCategories : [];
         return (
             <div>
                 {
@@ -53,8 +54,9 @@ class ProductMeta extends React.Component {
                     return (
                         <ul>
                             <li key={i + 1}>{item.productName}</li>
-                            <li key={i + 2}>Rs.{item.productAmount}</li>
-                            <li key={i + 3}>
+                            <li key={i + 2}>{item.productDescription}</li>
+                            <li key={i + 3}>Rs.{item.productAmount}</li>
+                            <li key={i + 4}>
                                <a href="javascript:void(0);" onClick={this._handleDeleteItem.bind(this, {pId: item.productId, pName: item.productName,pCat:category})}> X </a>
                             </li>
                         </ul>
