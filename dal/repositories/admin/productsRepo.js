@@ -39,32 +39,28 @@ exports.addProduct=function(productParam, callback){
 	var Product = require('../../models/admin/productModel');
 	var product = new Product( {
 		productname:productParam.productName,
+		productdescription: productParam.productDescription,
 		price:productParam.amount,
 		category:productParam.category
 	});
 	product.save(function (err, product) {
 		if (err) return console.error(err);
-		console.dir(product);
+		//product.save(callback);
+		callback();
 	});
-	//console.log( product);
 };
 
 //Delete a product 
 exports.deleteProduct= function(id, callback){
 	var product = require('../../models/admin/productModel');
 	var mongoose = require('mongoose');
-	console.log(id);
 	product.remove({_id: id},function(err,result){
 		if(err){
-			console.log('Error while deleting the document.');
+			console.log(err);
+			// console.log('Error while deleting the document.');
 		}
 		else {
-			console.log('Deleted Successfully. ' );
-			console.log(result);
+			callback();
 		}
 	});
-	// //product.remove({_id: new mongoose.mongo.ObjectID(product.id)}).remove(function(result){
-	// 	console.log('Deleted Successfully. ' );
-	// 	console.log(result);
-	// });
 };

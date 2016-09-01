@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {browserHistory} from 'react-router';
 
 import 'dist/stylesheets/main.css'
 
@@ -17,7 +18,7 @@ class Login extends React.Component {
         axios.post('api/auth', { username: self.refs.username.value, password: self.refs.password.value })
             .then(function (response) {
                 if (response.status === 200 && response.data.success) {
-
+                     browserHistory.push('/dashboard');
                 } else {
                     self.setState({ message: 'invalid login details' });
                 }

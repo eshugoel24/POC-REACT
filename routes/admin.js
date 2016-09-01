@@ -41,6 +41,7 @@ exports.addProduct = function(request, response) {
     var productRepo = require(path.join(__dirname, '../dal/repositories/admin/productsRepo'));
     var product = {
         productName: request.body['productName'],
+        productDescription: request.body['productDescription'],
         amount: request.body['productAmount'],
         category: request.body['productCategory']
     };
