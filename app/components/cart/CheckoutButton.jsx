@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 class CheckoutButton extends React.Component {
 	render() {
 		return (
-			<Link to="checkout"><button className="btn-primary" type="button">Checkout</button></Link>
+			<Link to="checkout"><button className="btn btn-primary" type="button">Checkout</button></Link>
 		);
 	}
 };

@@ -48,7 +48,7 @@ class AddReview extends React.Component {
                 <ReviewList values={this.state.values}/>
                 <div className="addReview">
                 <textarea ref="review" style={{ padding: 5 }} row="10" cols="50" placeholder="Add product review"></textarea><br/>
-                <button onClick={this._onAddReviewClick}>Add Review</button>
+                <button className="btn btn-primary" onClick={this._onAddReviewClick}>Add Review</button>
                 </div>
             </div>
         );

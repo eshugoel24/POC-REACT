@@ -36,7 +36,7 @@ class Login extends React.Component {
             <form onSubmit={this._onSubmit}>
                 <input className="type-text" type='text' ref='username' placeholder='username'></input><br/>
                 <input className="type-text" type='password' ref='password' placeholder='password'></input><br/>
-                <button className="button btn-primary" type='submit'>Login</button>
+                <button className="btn btn-primary" type='submit'>Login</button>
                 <p style={{ color: 'red' }}>{this.state.message}</p>
             </form>
             </div>

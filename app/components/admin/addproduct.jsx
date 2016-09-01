@@ -66,7 +66,7 @@ class AddProduct extends React.Component {
                     </div>
                 </div>
                 <div>
-                    <button className="btn-primary" onClick={this._handleProductClick}>Add</button>
+                    <button className="btn btn-primary" onClick={this._handleProductClick}>Add</button>
                 </div>
             </form>
         );
