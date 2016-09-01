@@ -17,7 +17,7 @@ class Product extends React.Component {
 		return (
 			<div id="productInCart">
 				<input type="text" value={productName}/>
-				<button className="button btn-default" type="button" onClick={this._remove.bind(this) }>Remove</button>
+				<button className="btn btn-default" type="button" onClick={this._remove.bind(this) }>Remove</button>
 			</div>
 		);
 	}

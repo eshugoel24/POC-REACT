@@ -36,17 +36,25 @@ module.exports = {
     },
     module: {
         loaders: [
-            { 
-                test: /\.css$/, loader: 'style!css' 
+            {
+                test: /\.css$/, loader: 'style!css'
             },
             {
-            loader: 'babel-loader',
-            query: {
-                presets: ['react', 'es2015', 'stage-0']
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url?limit=10000&mimetype=image/svg+xml'
             },
-            test: /\.jsx?$/,
-            exclude: /(node_modules|bower_components)/
-        }
+            {
+                test: /\.jpg$/, 
+                loader: "url-loader?limit=100000"
+            },
+            {
+                loader: 'babel-loader',
+                query: {
+                    presets: ['react', 'es2015', 'stage-0']
+                },
+                test: /\.jsx?$/,
+                exclude: /(node_modules|bower_components)/
+            }
         ]
     },
     devtool: 'cheap-module-eval-source-map'

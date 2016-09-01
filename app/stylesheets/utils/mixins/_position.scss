@@ -1,0 +1,13 @@
+@mixin pos-fixed() {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+}
+
+@mixin pos-absolute() {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+}

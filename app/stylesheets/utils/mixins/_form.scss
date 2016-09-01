@@ -1,0 +1,13 @@
+@mixin type-text() {
+    background: $body-bg;
+    border: $body-bg solid 1px;
+    padding: $padding-base-horizontal $padding-large-vertical;
+    @include font-default();
+    @include box-shadow(inset 0 1px 3px rgba(0,0,0,0.50));
+    @include text-shadow(1px 1px 0 rgba(256,256,256,1.0));
+    transition: all 0.5s;
+    &:hover {
+       background: #dfe9ec;
+       color: #414848;
+    }
+}

@@ -1,5 +1,12 @@
-input[type="text"], input[type="password"], select {
+input[type="text"], 
+input[type="password"], 
+select,
+textarea {
     @include type-text();
     margin: 0 10px 15px 0;
-    width: 90%;
+    width: 100%;
+}
+
+textarea {
+    min-height: 100px;
 }

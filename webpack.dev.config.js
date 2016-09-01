@@ -41,7 +41,16 @@ module.exports = {
     },
 
     module: {
-        loaders: [{
+        loaders: [
+            {
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url?limit=10000&mimetype=image/svg+xml'
+            },
+            {
+                test: /\.jpg$/, 
+                loader: "url-loader?limit=100000"
+            },
+            {
             loaders: ['react-hot', 'babel-loader', 'babel?presets[]=es2015&presets[]=react&presets[]=stage-0'],
             test: /\.jsx?$/,
             exclude: /(node_modules|bower_components)/
