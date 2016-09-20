@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import {browserHistory} from 'react-router';
-import ReactDOM from 'react-dom'
-
+import ReactDOM from 'react-dom';
+import Validations from '../../../validations/validations';
 import 'dist/stylesheets/main.css'
+import ErrorMessage from '../../../validations/ErrorMessage';
 
 class Login extends React.Component {
     constructor() {
@@ -15,23 +16,21 @@ class Login extends React.Component {
     _onSubmit(e) {
         var self = this;
         e.preventDefault();
-        //Todo: Implement react-validation
-        if(self.refs.password.value === '' && self.refs.username.value === ''){
-              ReactDOM.findDOMNode(this.refs.errusername).setAttribute('style','display:block');
-              ReactDOM.findDOMNode(this.refs.errpassword).setAttribute('style','display:block');
-        }
-        else if(self.refs.password.value === ''){
-              ReactDOM.findDOMNode(this.refs.errpassword).setAttribute('style','display:block');
-              ReactDOM.findDOMNode(this.refs.errusername).setAttribute('style','display:none');
-        }
-        else if(self.refs.username.value === ''){
+        if(!Validations.isRequired(self.refs.username.value.trim()) && !Validations.isRequired(self.refs.password.value.trim()) ){
             ReactDOM.findDOMNode(this.refs.errusername).setAttribute('style','display:block');
-            ReactDOM.findDOMNode(this.refs.errpassword).setAttribute('style','display:none');  
+            ReactDOM.findDOMNode(this.refs.errpassword).setAttribute('style','display:block');
+        }
+        else if(!Validations.isRequired(self.refs.password.value.trim())){
+            ReactDOM.findDOMNode(this.refs.errpassword).setAttribute('style','display:block');
+            ReactDOM.findDOMNode(this.refs.errusername).setAttribute('style','display:none');
+        }
+        else if(!Validations.isRequired(self.refs.username.value.trim())){
+            ReactDOM.findDOMNode(this.refs.errusername).setAttribute('style','display:block');
+            ReactDOM.findDOMNode(this.refs.errpassword).setAttribute('style','display:none');
         }
         else{
             ReactDOM.findDOMNode(this.refs.errusername).setAttribute('style','display:none');
             ReactDOM.findDOMNode(this.refs.errpassword).setAttribute('style','display:none');
-
             axios.post('api/auth', { username: self.refs.username.value, password: self.refs.password.value })
             .then(function (response) {
                 if (response.status === 200 && response.data.success) {
@@ -44,7 +43,7 @@ class Login extends React.Component {
                 self.setState({ message: 'something went wrong, try after some time' });
             });
         }
-        
+
     }
 
     render() {
@@ -54,9 +53,9 @@ class Login extends React.Component {
             <p>Fill out the form below to login to my super awesome imaginary control panel.</p>
             <form onSubmit={this._onSubmit}>
                 <input className="type-text" type='text' ref='username' placeholder='username'></input><br/>
-                <span style={{display: 'none' }} ref="errusername">UserName is required</span>
+                <ErrorMessage ref="errusername" errMessage='UserName Field is reuired'></ErrorMessage>
                 <input className="type-text" type='password' ref='password' placeholder='password'></input><br/>
-                <span style={{display: 'none' }} ref="errpassword">Password is required</span>
+                <ErrorMessage ref="errpassword" errMessage='Password Field is reuired'></ErrorMessage>
                 <button className="btn btn-primary" type='submit'>Login</button>
                 <p style={{ color: 'red' }}>{this.state.message}</p>
             </form>
