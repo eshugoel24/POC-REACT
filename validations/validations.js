@@ -3,7 +3,7 @@ class Validations{
   constructor(){
   };
   //This function is used to check required field in form
-  isRequired(inputString){
+  isRequired = (inputString)=>{
       let isFieldValid = !inputString.length > 0 ?false:true;
       return isFieldValid;
   };
