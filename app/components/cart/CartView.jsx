@@ -40,7 +40,7 @@ class Cart extends React.Component {
                 <h4>Your Cart</h4>
 				{
 					productNames.map(function (product) {
-						return <Product productName={product} remove={self._removeProductName.bind(self) }/>
+						return <Product key={productNames.indexOf(product)} productName={product} remove={self._removeProductName.bind(self) }/>
 					})
 				}
 				<CheckoutButton />

@@ -28,7 +28,6 @@ class Dashboard extends React.Component {
         contentDiv:'<div>Content Div</div>',
 
       };
-      debugger
         return (
             <div>
                 <a href='#' onClick={this._showPopUp}>Show PopUp</a>
