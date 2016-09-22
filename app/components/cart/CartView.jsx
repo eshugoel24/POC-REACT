@@ -5,14 +5,13 @@ import CheckoutButton from './CheckoutButton'
 class Cart extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { productNames: [] };
+		this.state = { productNames: ['Mouse','KeyBoard','Monitor','Bottle'] };
 	}
 
     componentWillReceiveProps(props) {
 		var newProductName = props.product;
 		var cartProducts = this.state.productNames;
 		cartProducts.push(newProductName);
-
 		this.setState({ productNames: cartProducts });
 	}
 
@@ -36,13 +35,12 @@ class Cart extends React.Component {
 	render() {
 		var self = this;
 		var productNames = this.state.productNames;
-
 		return (
 			<div id="cart" className="cartMain right">
                 <h4>Your Cart</h4>
 				{
 					productNames.map(function (product) {
-						return <Product productName={product} remove={self._removeProductName.bind(self) }/>
+						return <Product key={productNames.indexOf(product)} productName={product} remove={self._removeProductName.bind(self) }/>
 					})
 				}
 				<CheckoutButton />
