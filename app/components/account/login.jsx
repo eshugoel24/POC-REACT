@@ -9,10 +9,9 @@ import ErrorMessage from '../../../validations/ErrorMessage';
 class Login extends React.Component {
     constructor() {
         super();
-        this.state = { message: '' };
+        this.state = { message: ''};
         this._onSubmit = this._onSubmit.bind(this);
     }
-
     _onSubmit(e) {
         var self = this;
         e.preventDefault();

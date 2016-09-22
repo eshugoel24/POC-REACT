@@ -4,7 +4,6 @@ import axios from 'axios'
 class ProductList extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = { items: [] };
     }
 
@@ -22,15 +21,16 @@ class ProductList extends React.Component {
         this.props.addProduct(item);
     }
 
+
+
     render() {
         var self = this;
-        
         return (
             <div className="productMain left">
                 <ul className="row">
                     {
                         self.state.items.map(function (item) {
-                            return (<li className="col-md-3" key={item.productid}>
+                            return (<li className="col-md-3" key={item._id}>
                                 <Image src='' />
                                 {item.productname}
                                 <p>Rs.{item.price}</p>
