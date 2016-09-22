@@ -15,7 +15,6 @@ class Dashboard extends React.Component {
         this._showPopUp = this._showPopUp.bind(this);
     }
     _showPopUp(){
-      debugger
       this.setState({isPopUp:true});
     }
 

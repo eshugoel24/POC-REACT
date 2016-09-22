@@ -35,7 +35,6 @@ class Cart extends React.Component {
 	render() {
 		var self = this;
 		var productNames = this.state.productNames;
-		debugger
 		return (
 			<div id="cart" className="cartMain right">
                 <h4>Your Cart</h4>
